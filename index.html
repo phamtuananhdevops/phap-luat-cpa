@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>Pháp luật CPA 2026 — Chuyên đề 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{
+  --bg:#f7f5f0; --surface:#fffdf8; --surface2:#efe9dd; --ink:#1c1a15; --muted:#5c5648;
+  --line:#d8d0bf; --accent:#7a2e1d; --accent-ink:#fff; --ok:#1e6b3a; --warn:#9a6a00; --bad:#a12622;
+  --chip:#efe6d4; --shadow:0 1px 3px rgba(28,26,21,.12);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#16140f; --surface:#201d16; --surface2:#2a2619; --ink:#ece7da; --muted:#b3ab97;
+  --line:#3d382b; --accent:#d98a6d; --accent-ink:#1c1008; --ok:#7fc98f; --warn:#e0b558; --bad:#e08a84;
+  --chip:#2e2a1d; --shadow:0 1px 3px rgba(0,0,0,.5); }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,sans-serif;line-height:1.65;font-size:16px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;line-height:1.25;margin:0 0 .5rem}
+h1{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+h2{font-size:clamp(1.35rem,3vw,1.8rem);border-bottom:2px solid var(--accent);padding-bottom:.35rem;margin-top:2.2rem}
+h3{font-size:1.12rem}
+p{margin:.4rem 0 .8rem}
+a{color:var(--accent)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px 64px}
+.muted{color:var(--muted)} .small{font-size:.88rem}
+.hero{padding:28px 0 8px}
+.hero .kicker{font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.8rem;color:var(--accent)}
+.countdown{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.countdown div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:84px;text-align:center;box-shadow:var(--shadow)}
+.countdown b{display:block;font-size:1.7rem;font-family:"Source Serif 4",serif}
+.countdown span{font-size:.78rem;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+.card h3{margin-bottom:.3rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.btn:disabled{opacity:.55;cursor:wait}
+.chip{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.8rem;margin:2px 2px 2px 0}
+.badge{display:inline-block;border-radius:6px;padding:2px 9px;font-size:.8rem;font-weight:700}
+.badge.ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok);border:1px solid var(--ok)}
+.badge.warn{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn);border:1px solid var(--warn)}
+details.part,details.qcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0;box-shadow:var(--shadow)}
+summary{cursor:pointer;font-weight:700;font-size:1.05rem}
+textarea,input[type=text]{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px;font:inherit}
+textarea{min-height:110px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.93rem}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--surface2)}
+.sol{background:var(--surface2);border-radius:10px;padding:12px 14px;margin-top:10px}
+.sol h4{margin:.6rem 0 .2rem;font-size:1rem}
+.note{border:1px solid var(--warn);border-radius:10px;padding:10px 14px;margin:10px 0;background:color-mix(in srgb,var(--warn) 8%,transparent)}
+.progressbar{height:10px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.progressbar i{display:block;height:100%;background:var(--accent);width:0%}
+.quizopt{display:block;width:100%;text-align:left;margin:6px 0;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;cursor:pointer}
+.quizopt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent)}
+.quizopt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.flash{min-height:150px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.1rem;padding:20px;cursor:pointer}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+#authBar{display:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;align-items:center;gap:10px;flex-wrap:wrap}
+#chatBox{position:fixed;right:12px;bottom:12px;width:min(430px,calc(100vw - 24px));background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.25);z-index:50;display:none;flex-direction:column;max-height:min(70dvh,640px)}
+#chatBox.open{display:flex}
+#chatMsgs{overflow-y:auto;padding:12px;font-size:.93rem}
+#chatMsgs .me{text-align:right} #chatMsgs .me span,#chatMsgs .ai span{display:inline-block;border-radius:10px;padding:8px 11px;margin:4px 0;max-width:88%;text-align:left}
+#chatMsgs .me span{background:var(--accent);color:var(--accent-ink)}
+#chatMsgs .ai span{background:var(--surface2)}
+#chatFab{position:fixed;right:12px;bottom:12px;z-index:49}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:16px}
+.rubric td:last-child{white-space:nowrap;font-weight:700}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.toc a{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 12px;text-decoration:none;font-size:.88rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">Chuyên đề 1 · Kỳ thi CPA 2026</p>
+  <h1>Pháp luật về kinh tế và Luật Doanh nghiệp</h1>
+  <p>Thi <strong>Chủ nhật 13/12/2026, 14:00–17:00</strong> — thi viết <strong>180 phút</strong>, <strong>5 câu × 2 điểm</strong>, điểm đạt <strong>≥ 5/10</strong> (theo CV 226/TB-HĐTKTV2026). Khung chương trình theo Thông báo 04/TB-QLKT năm 2026 và sách Chuyên đề 1 năm 2026 của Bộ Tài chính (181 trang, 09/07/2026): 7 phần — Doanh nghiệp, Đầu tư, Hợp đồng trong KDTM, Cạnh tranh, Giải quyết tranh chấp KDTM, Phá sản, Lao động.</p>
+  <div class="countdown" id="countdown" aria-label="Đếm ngược tới giờ thi">
+    <div><b id="cdD">–</b><span>ngày</span></div>
+    <div><b id="cdH">–</b><span>giờ</span></div>
+    <div><b id="cdM">–</b><span>phút</span></div>
+    <div><b id="cdS">–</b><span>giây</span></div>
+  </div>
+  <p class="small muted">Đăng nhập là tùy chọn — mọi tính năng học đều dùng được khi chưa đăng nhập; đăng nhập Google chỉ để đồng bộ tiến độ giữa các thiết bị.</p>
+  <button class="btn ghost" id="loginToggle" type="button">Đăng nhập Google (tùy chọn)</button>
+  <div id="authBar">
+    <span id="authStatus">Chưa đăng nhập.</span>
+    <button class="btn" id="btnLogin" type="button">Đăng nhập bằng Google</button>
+    <button class="btn ghost" id="btnLogout" type="button" style="display:none">Đăng xuất</button>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>Tiến độ học của bạn</h3>
+    <div class="progressbar"><i id="progBar"></i></div>
+    <p class="small" id="progText">Đang đọc tiến độ đã lưu trên trình duyệt…</p>
+    <button class="btn ghost" id="btnClearProgress" type="button">Xóa toàn bộ tiến độ</button>
+  </div>
+  <nav class="cards" aria-label="Thẻ nhanh">
+    <div class="card"><h3>Môn Pháp luật</h3><p class="small">Khung chương trình 7 phần theo sách Chuyên đề 1 năm 2026, kèm điều luật trọng tâm và lỗi hay gặp.</p><a class="btn" href="#khung">Xem khung chương trình</a></div>
+    <div class="card"><h3>Tiếp tục học</h3><p class="small" id="continueText">Chưa có vị trí học dở nào được lưu.</p><a class="btn" href="#giai-de">Tiếp tục học</a></div>
+    <div class="card"><h3>Làm đề thi</h3><p class="small">Thi thử 180 phút với đề lẻ 2024 — cả 5 câu đều đã kiểm định — có đồng hồ, tự chấm theo rubric và chấm AI 5 tiêu chí.</p><a class="btn" href="#thi-thu">Vào phòng thi thử</a></div>
+  </nav>
+</header>
+
+<h2 id="lo-trinh">Lộ trình 30 ngày (13/11 – 12/12) + ngày thi</h2>
+<p>Mỗi ngày một khối chính, cuối tuần ôn lại và làm đề. Đánh dấu hoàn thành từng ngày — tiến độ lưu trên trình duyệt này.</p>
+<div id="roadmap"></div>
+
+<h3>Chẩn đoán nhanh — 12 câu</h3>
+<p class="small">Làm 12 câu dưới đây để biết phần nào yếu nhất trước khi vào lộ trình. Kết quả chỉ để tự định hướng, không lưu ra ngoài.</p>
+<div id="diagnostic"></div>
+<p><button class="btn" id="btnDiag" type="button">Chấm chẩn đoán</button> <span id="diagResult" role="status"></span></p>
+
+<h2 id="khung">Khung chương trình — 7 phần (sách Chuyên đề 1 năm 2026)</h2>
+<p class="small muted">Nguồn: sách Chuyên đề 1 năm 2026 (181 trang). Nội dung dưới đây là tóm tắt/diễn giải có ghi nguồn, không sao chép nguyên văn sách. Phạm vi môn chỉ gồm 7 phần này — Luật Kế toán, Luật Kiểm toán độc lập, Luật Chứng khoán, Luật Quản lý thuế <strong>không</strong> thuộc môn này (chỉ được nhắc khi sách có viện dẫn chéo).</p>
+<div id="parts"></div>
+
+<h2 id="on-tap">Flashcards &amp; Quiz theo phần</h2>
+<div class="grid2">
+  <div class="card">
+    <h3>Flashcards</h3>
+    <div class="card flash" id="flashCard" tabindex="0" role="button" aria-label="Thẻ ghi nhớ, bấm để lật">Bấm để xem thẻ đầu tiên</div>
+    <p class="small muted" id="flashMeta"></p>
+    <button class="btn ghost" id="flashPrev" type="button">← Thẻ trước</button>
+    <button class="btn" id="flashNext" type="button">Thẻ sau →</button>
+  </div>
+  <div class="card">
+    <h3>Quiz nhanh</h3>
+    <div id="quizBox"></div>
+    <p class="small" id="quizScore" role="status"></p>
+  </div>
+</div>
+
+<h2 id="dang-bai">Ngân hàng dạng bài theo 7 phần</h2>
+<div id="exerciseBank"></div>
+
+<h2 id="giai-de">Giải đề từng câu — Đề 2024 + 2023 (chẵn + lẻ)</h2>
+<p><span class="badge ok">Đã kiểm định: 17 câu</span> <span class="badge warn">Chưa đạt — chờ đối chiếu: 3 câu</span> <span class="badge ok">Chưa kiểm định được: 0 câu</span></p>
+<p class="small">Phân bổ: 2024 chẵn 3 đã kiểm định / 2 chưa đạt · 2024 lẻ 5/0 · 2023 chẵn 5/0 · 2023 lẻ 4/1. Mọi lời giải đều là <strong>lời giải tham khảo tự tính — KHÔNG phải đáp án chính thức</strong> (Bộ Tài chính/Hội đồng thi không công bố đáp án môn này). Đáp án chính trình bày theo <strong>luật 2026</strong>; đáp án theo luật tại thời điểm ra đề được ghi chú kèm theo khi có thay đổi. Ô tự làm của từng câu được lưu trên trình duyệt này.</p>
+<div class="toc" id="examFilter">
+  <a href="#giai-de" data-f="all">Tất cả 20 câu</a>
+  <a href="#giai-de" data-f="2024C">2024 chẵn</a>
+  <a href="#giai-de" data-f="2024L">2024 lẻ</a>
+  <a href="#giai-de" data-f="2023C">2023 chẵn</a>
+  <a href="#giai-de" data-f="2023L">2023 lẻ</a>
+</div>
+<div id="solutions"></div>
+
+<h2 id="thi-thu">Thi thử 180 phút — Đề lẻ 2024</h2>
+<p>Đề lẻ 2024 được chọn làm đề thi thử vì cả 5 câu đều đã kiểm định. Bấm bắt đầu để đồng hồ đếm ngược 180 phút chạy; viết bài vào 5 ô dưới đây, sau đó tự chấm theo rubric của từng câu (ở mục Giải đề) hoặc gửi chấm AI 5 tiêu chí.</p>
+<p><button class="btn" id="mockStart" type="button">Bắt đầu thi thử</button> <strong id="mockClock" aria-live="polite">180:00</strong> <span class="small muted" id="mockState">Chưa bắt đầu.</span></p>
+<div id="mockBox"></div>
+<p><button class="btn ghost" id="mockGradeAI" type="button">Chấm AI 5 tiêu chí (toàn bài)</button></p>
+<div id="mockGradeOut" class="sol" style="display:none"></div>
+
+<h2 id="phu-luc">Phụ lục văn bản pháp luật (24 văn bản)</h2>
+<p class="small">Nhãn ở cột cuối cho biết sách Chuyên đề 1 năm 2026 ghi gì về văn bản: <strong>✅</strong> = sách ghi số hiệu/ngày · <strong>◐</strong> = sách chỉ ghi tên/năm, số hiệu/ngày lấy từ nguồn ngoài đã xác minh · <strong>❌</strong> = sách 2026 không nhắc tới (chỉ có trong sách 2025 hoặc là văn bản lịch sử). Các văn bản ❌ không được trình bày như tài liệu của sách 2026.</p>
+<table>
+<thead><tr><th>#</th><th>Văn bản</th><th>Số hiệu</th><th>Ban hành / hiệu lực</th><th>Vai trò trong môn</th><th>Sách 2026</th></tr></thead>
+<tbody id="lawTable"></tbody>
+</table>
+
+<h2 id="de-cac-nam">Bảng đề thi các năm</h2>
+<table>
+<thead><tr><th>Năm</th><th>Đề</th><th>Nguồn / trạng thái</th><th>Ghi chú</th></tr></thead>
+<tbody>
+<tr><td>2025</td><td>Chẵn</td><td>Bản scan 3 trang qua Thư viện Pháp luật</td><td><span class="badge warn">Chờ đọc</span> — chưa có mục giải 2025</td></tr>
+<tr><td>2025</td><td>Lẻ</td><td>Chỉ có tiêu đề trên TACA (nội dung là ảnh)</td><td><span class="badge warn">Chờ đọc</span> — chưa có mục giải 2025</td></tr>
+<tr><td>2024</td><td>Chẵn + Lẻ</td><td>Gonnapass — đọc toàn văn</td><td>Đã giải đủ 10 câu ở mục Giải đề</td></tr>
+<tr><td>2023</td><td>Chẵn + Lẻ</td><td>Gonnapass — đọc toàn văn</td><td>Đã giải đủ 10 câu ở mục Giải đề</td></tr>
+<tr><td>2022</td><td>Chẵn + Lẻ</td><td>TACA — toàn văn</td><td>Nguồn đối chiếu khung; chưa có mục giải riêng trên trang này</td></tr>
+<tr><td>2021</td><td>—</td><td>Không tổ chức thi</td><td>—</td></tr>
+<tr><td>2004–2020</td><td>Chẵn + Lẻ</td><td>Gonnapass — thư mục theo năm</td><td>Chỉ thấy link thư mục, chưa mở từng file</td></tr>
+</tbody>
+</table>
+
+<footer>
+<p class="small muted">Nguồn nội dung: báo cáo lời giải đề 2024 + 2023 (nghiên cứu 06/11/2026), digest sách Chuyên đề 1 năm 2026 và báo cáo nghiên cứu nền môn Pháp luật CPA (05/11/2026). Lời giải trên trang là lời giải tham khảo tự tính — KHÔNG phải đáp án chính thức. Câu hỏi bạn gửi cho gia sư AI được ghi lại ẩn danh (chỉ nội dung câu hỏi và thời gian, không kèm tên, đáp án hay thông tin nhận dạng) để cải thiện bộ câu hỏi thường gặp.</p>
+</footer>
+</div>
+
+<button class="btn" id="chatFab" type="button">Hỏi gia sư AI</button>
+<div id="chatBox" role="dialog" aria-label="Chat gia sư AI">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)">
+    <strong>Gia sư AI — Pháp luật CPA</strong>
+    <span><button class="btn ghost" id="chatExpand" type="button">Mở rộng</button> <button class="btn ghost" id="chatClose" type="button">Đóng</button></span>
+  </div>
+  <div id="chatMsgs"><div class="ai"><span>Chào bạn, hỏi mình bất cứ điều gì trong 7 phần của môn. Mình trả lời kèm điều luật và cho biết khi câu hỏi nằm ngoài nội dung trang.</span></div></div>
+  <div style="display:flex;gap:6px;padding:10px;border-top:1px solid var(--line)">
+    <input type="text" id="chatInput" placeholder="Nhập câu hỏi…" aria-label="Nhập câu hỏi">
+    <button class="btn" id="chatSend" type="button">Gửi</button>
+  </div>
+</div>
+<script>
+/* ============ DỮ LIỆU: 7 PHẦN (theo digest sách CD1 2026) ============ */
+var PARTS=[
+{n:1,t:"Doanh nghiệp",pages:"tr. 1–44",law:"Luật Doanh nghiệp 59/2020/QH14, sửa đổi bởi Luật 76/2025/QH15; Nghị định 168/2025/NĐ-CP về đăng ký doanh nghiệp",
+ goal:"Nắm loại hình doanh nghiệp, góp vốn và định giá tài sản góp vốn, quản trị TNHH/CTCP, tổ chức lại và giải thể — phần ra đề mọi năm, trọng số lớn nhất.",
+ theory:["Doanh nghiệp là tổ chức có tên riêng, có tài sản, có trụ sở giao dịch, thành lập/đăng ký theo pháp luật nhằm mục đích kinh doanh. 5 loại hình: TNHH một thành viên, TNHH hai thành viên trở lên, công ty cổ phần, công ty hợp danh, doanh nghiệp tư nhân (chỉ DNTN không có tư cách pháp nhân).",
+ "Quyền của doanh nghiệp tại Điều 7 LDN 2020; doanh nghiệp công ích Điều 9; doanh nghiệp xã hội Điều 10.",
+ "Tài sản góp vốn (Điều 34): Đồng Việt Nam, ngoại tệ tự do chuyển đổi, vàng, giá trị quyền sử dụng đất, quyền sở hữu trí tuệ, công nghệ, bí quyết kỹ thuật, tài sản khác định giá được bằng Đồng Việt Nam. Định giá khi thành lập (Điều 36.2): thành viên/cổ đông sáng lập định giá theo nguyên tắc đồng thuận hoặc tổ chức thẩm định giá định giá (phải được trên 50% số thành viên/cổ đông sáng lập chấp thuận); định giá cao hơn giá trị thực tế thì liên đới góp thêm phần chênh lệch.",
+ "TNHH 2TV trở lên (Điều 47): góp đủ và đúng loại tài sản đã cam kết trong 90 ngày kể từ ngày được cấp GCN đăng ký doanh nghiệp; chưa góp thì đương nhiên không còn là thành viên; chưa góp đủ thì chỉ có quyền tương ứng phần đã góp (Điều 47.3(b)); phần chưa góp được chào bán theo quyết định của HĐTV; công ty đăng ký thay đổi vốn điều lệ trong 30 ngày (Điều 47.4). Chia lợi nhuận theo phần vốn góp sau khi nộp đủ thuế và hoàn thành nghĩa vụ tài chính (Điều 50.3, Điều 69).",
+ "CTCP: tối thiểu 03 cổ đông; cổ đông sáng lập cùng đăng ký mua ít nhất 20% cổ phần phổ thông được quyền chào bán; hạn chế chuyển nhượng của cổ đông sáng lập trong 3 năm đầu (Điều 120.3). Thanh toán cổ phần đã đăng ký mua trong 90 ngày (Điều 113); cổ phần chưa thanh toán coi là cổ phần chưa bán, HĐQT được quyền bán; đăng ký điều chỉnh vốn điều lệ trong 30 ngày (Điều 113.3(d)).",
+ "ĐHĐCĐ quyết định đầu tư/bán tài sản từ 35% tổng giá trị tài sản trở lên (Điều 138.2(d)); điều kiện tiến hành họp: lần 1 trên 50% tổng số phiếu biểu quyết, lần 2 từ 33%, lần 3 không phụ thuộc tỷ lệ (Điều 145); nghị quyết quan trọng cần từ 65% phiếu biểu quyết của cổ đông dự họp (Điều 148.3). Cổ đông/nhóm cổ đông từ 05% cổ phần phổ thông có quyền yêu cầu triệu tập ĐHĐCĐ bất thường, yêu cầu BKS kiểm tra (Điều 115.2) và yêu cầu hủy nghị quyết trong 90 ngày (Điều 151).",
+ "Giải thể (Điều 207.1): hết thời hạn hoạt động ghi trong Điều lệ mà không gia hạn; theo nghị quyết/quyết định của cơ quan có thẩm quyền của công ty; không còn đủ số lượng thành viên tối thiểu trong 06 tháng liên tục mà không chuyển đổi loại hình; bị thu hồi GCN đăng ký doanh nghiệp. Thứ tự thanh toán khi giải thể (Điều 208.2): nợ lương/trợ cấp/BHXH của người lao động → nợ thuế → các khoản nợ khác; phần còn lại chia theo tỷ lệ vốn góp/cổ phần.",
+ "Sáp nhập (Điều 201): hợp đồng sáp nhập có các nội dung chủ yếu tại Điều 201.2; ĐHĐCĐ các bên thông qua (≥65% — Điều 148.3(g)); công ty nhận sáp nhập thông báo cho chủ nợ và người lao động trong 15 ngày; công ty bị sáp nhập chấm dứt tồn tại khi công ty nhận sáp nhập được cấp GCN mới và công ty nhận sáp nhập kế thừa toàn bộ quyền, nghĩa vụ."],
+ ex:"Sách 2026 không có ví dụ tình huống riêng cho Phần 1; ghi chú diễn giải ở tr. 3 về trách nhiệm hữu hạn là nhận định của sách, không phải trích dẫn điều luật.",
+ mistakes:["Chia lợi nhuận theo tỷ lệ cam kết trên GCN thay vì tỷ lệ vốn thực góp.","Quên nghĩa vụ đăng ký thay đổi/điều chỉnh vốn điều lệ trong 30 ngày khi có thành viên/cổ đông chưa góp đủ.","Cho rằng cổ đông chết thì công ty phải giải thể (quên thừa kế cổ phần — Điều 127).","Nhầm sáp nhập (Điều 201) với hợp nhất (Điều 200)."],
+ note:"Sách 2026 chỉ trích dẫn Luật 76/2025/QH15 và Nghị định 168/2025/NĐ-CP — sách KHÔNG có nội dung thực chất về chủ sở hữu hưởng lợi, KHÔNG đưa ngưỡng 25% hay tỷ lệ nợ/vốn 5:1 như nội dung của sách. Luật 03/2022/QH15, NĐ 47/2021, NĐ 01/2021, TT 01/2021, TT 02/2023 không có trong sách 2026 và không được liệt kê như tài liệu của sách."},
+{n:2,t:"Đầu tư",pages:"tr. 45–75",law:"Luật Đầu tư 143/2025/QH15 (hiệu lực 01/03/2026); Nghị định 96/2026/NĐ-CP",
+ goal:"Nắm bảo đảm đầu tư, ngành nghề cấm/có điều kiện, đối tượng và hình thức ưu đãi, thẩm quyền chấp thuận chủ trương đầu tư và cấp GCN đăng ký đầu tư theo Luật Đầu tư 2025.",
+ theory:["Phần này xây trên Luật Đầu tư 143/2025/QH15 (07 chương, 52 điều, 4 phụ lục; hiệu lực 01/03/2026) — KHÔNG phải Luật 61/2020 + 57/2024 (hai số hiệu này không xuất hiện trong sách 2026).",
+ "Bảo đảm đầu tư: tài sản hợp pháp không bị quốc hữu hóa/tịch thu bằng biện pháp hành chính; thay đổi pháp luật có ưu đãi cao hơn thì được hưởng ưu đãi mới cho thời gian còn lại, ưu đãi thấp hơn thì tiếp tục hưởng ưu đãi cũ cho thời gian còn lại (trừ ngoại lệ quốc phòng, an ninh, đạo đức xã hội, sức khỏe cộng đồng, môi trường — nhà đầu tư phải yêu cầu bằng văn bản trong 03 năm).",
+ "Ngành, nghề cấm đầu tư kinh doanh gồm cả kinh doanh thuốc lá điện tử, thuốc lá nung nóng (điểm mới so với Luật 2020). Ngành, nghề kinh doanh có điều kiện theo Phụ lục IV.",
+ "Ưu đãi đầu tư (Điều 14–15 Luật 2025): 16 nhóm đối tượng, trong đó có dự án thuộc ngành nghề ưu đãi/đặc biệt ưu đãi; dự án tại địa bàn khó khăn/đặc biệt khó khăn; dự án vốn từ 6.000 tỷ đồng trở lên (giải ngân tối thiểu 6.000 tỷ trong 03 năm); dự án nhà ở xã hội; dự án tại vùng nông thôn sử dụng từ 500 lao động thường xuyên… Ưu đãi và hỗ trợ đầu tư đặc biệt (Điều 17) do Chính phủ quyết định áp dụng.",
+ "Chấp thuận chủ trương đầu tư: Điều 24 liệt kê 20 loại dự án thuộc diện chấp thuận; thẩm quyền (Điều 25): Quốc hội — dự án khoản 20 Điều 24; Thủ tướng — các khoản 1, 2, 4, 6, 7, 19 Điều 24 và một số trường hợp khoản 3, 5; Chủ tịch UBND cấp tỉnh — các khoản 8–18 và các trường hợp còn lại; Ban quản lý khu — dự án trong khu theo quy hoạch đã phê duyệt.",
+ "GCN đăng ký đầu tư (Điều 26–27): dự án của nhà đầu tư nước ngoài và của tổ chức kinh tế thuộc khoản 1 Điều 20 phải cấp; thẩm quyền cấp: Ban quản lý khu (dự án trong khu), Sở Tài chính (dự án ngoài khu). Nhà đầu tư nước ngoài được thành lập tổ chức kinh tế trước khi làm thủ tục cấp/điều chỉnh GCN đăng ký đầu tư (Điều 19).",
+ "Thủ tục đầu tư đặc biệt (Điều 28): dự án trong khu công nghiệp, khu chế xuất, khu công nghệ cao, khu công nghệ số tập trung, khu thương mại tự do, trung tâm tài chính quốc tế được miễn một loạt thủ tục khi có cam kết bằng văn bản. Thời hạn hoạt động dự án: trong khu kinh tế không quá 70 năm; ngoài khu kinh tế không quá 50 năm (trường hợp đặc biệt không quá 70 năm).",
+ "Lưu ý khi giải đề cũ: đề 2023–2024 ra theo Luật Đầu tư 2020 — Điều 15.2(c) (dự án vốn từ 6.000 tỷ, giải ngân tối thiểu 6.000 tỷ trong 03 năm và doanh thu 10.000 tỷ/năm hoặc sử dụng trên 3.000 lao động), Điều 15.7 (đáp ứng nhiều điều kiện ưu đãi thì hưởng mức cao nhất), Điều 16.1 (ngành nghề ưu đãi), Điều 32.1(a)/(c) (thẩm quyền UBND tỉnh). Luật Đầu tư 2025 sửa Điều 30–32 về thẩm quyền nhưng thẩm quyền UBND tỉnh và ưu đãi Điều 15/16 không đổi."],
+ ex:"Sách 2026 không có ví dụ tình huống riêng cho Phần 2.",
+ mistakes:["Xác định sai thẩm quyền chấp thuận chủ trương (nhầm dự án sân gôn/diện tích lớn thuộc Thủ tướng).","Cho rằng nhà đầu tư nước ngoài không cần GCN đăng ký đầu tư.","Phân tích ưu đãi mà không tách căn cứ ngành nghề và căn cứ địa bàn.","Nêu mức thuế suất ưu đãi cụ thể mà không dẫn chiếu Luật Thuế TNDN (ngoài phạm vi môn này)."],
+ note:"Điểm cần đối chiếu lại khi đăng: danh mục địa bàn Phụ lục III NĐ 31/2021 cho Lương Sơn (Hòa Bình) và Mộc Châu (Sơn La) chưa xác minh — kết luận ưu đãi trong các câu giải đề chỉ dựa trên căn cứ ngành nghề (Điều 16.1)."},
+{n:3,t:"Hợp đồng trong kinh doanh, thương mại",pages:"tr. 76–91",law:"Bộ luật Dân sự 91/2015/QH13; Luật Thương mại 36/2005/QH11",
+ goal:"Nắm giao kết hợp đồng, 9 biện pháp bảo đảm, điều kiện hiệu lực và hợp đồng vô hiệu, các hình thức trách nhiệm do vi phạm hợp đồng trong KDTM.",
+ theory:["Hợp đồng là sự thỏa thuận về xác lập, thay đổi hoặc chấm dứt quyền, nghĩa vụ dân sự (Điều 385 BLDS). Im lặng không được coi là chấp nhận đề nghị giao kết, trừ khi có thỏa thuận hoặc thói quen đã xác lập. Thời điểm giao kết: khi bên đề nghị nhận được chấp nhận (Điều 400 BLDS).",
+ "9 biện pháp bảo đảm (Điều 292–350 BLDS): cầm cố, thế chấp, đặt cọc, ký cược, ký quỹ, bảo lưu quyền sở hữu, bảo lãnh (phải lập thành văn bản), tín chấp, cầm giữ tài sản.",
+ "Điều kiện có hiệu lực (Điều 117 BLDS): chủ thể có năng lực phù hợp; mục đích, nội dung không vi phạm điều cấm của luật, không trái đạo đức xã hội; hoàn toàn tự nguyện; hình thức là điều kiện hiệu lực khi luật quy định.",
+ "Trách nhiệm do vi phạm (Luật Thương mại): buộc thực hiện đúng hợp đồng (Điều 297); phạt vi phạm chỉ khi có thỏa thuận, tối đa 8% giá trị phần nghĩa vụ bị vi phạm (Điều 300, 301); bồi thường thiệt hại toàn bộ tổn thất thực tế, trực tiếp và khoản lợi trực tiếp đáng lẽ được hưởng (Điều 303, 307); tạm ngừng, đình chỉ, hủy bỏ hợp đồng khi có thỏa thuận hoặc vi phạm cơ bản (Điều 308, 310, 312.4).",
+ "Miễn trách nhiệm (Điều 294 Luật Thương mại; Điều 156.1 BLDS): sự kiện bất khả kháng phải khách quan, không lường trước được, không khắc phục được; sự cố kỹ thuật nội bộ có thể lường trước/khắc phục bằng bảo trì, dự phòng không phải bất khả kháng. Gia hạn do bất khả kháng: tối đa 05 tháng (hàng hóa có thời hạn giao hàng không quá 12 tháng), 08 tháng (trên 12 tháng) — Điều 296 Luật Thương mại."],
+ ex:"4 ví dụ minh họa ngắn trong sách thuộc Phần 3 và Phần 5: (1) tr. 85 — hàng hóa, dịch vụ cấm kinh doanh, trích Luật Đầu tư 2020/NĐ 31/2021: ĐÃ LỖI THỜI, nay đọc theo Luật Đầu tư 143/2025 và NĐ 96/2026; (2) tr. 85–86 — hợp đồng bắt buộc bằng văn bản (mua bán hàng hóa quốc tế, mua bán nhà ở kinh doanh); (3) tr. 89 — quyền ngừng thanh toán tiền hàng (Điều 51 Luật Thương mại); (4) Phần 5, tr. 108 — nguyên tắc bình đẳng trong tố tụng trọng tài (Điều 4 Luật Trọng tài thương mại 2010).",
+ mistakes:["Cho rằng hỏng thiết bị nội bộ là sự kiện bất khả kháng.","Áp dụng phạt vi phạm khi hợp đồng không có thỏa thuận phạt; phạt vượt 8%.","Cho rằng bên bị vi phạm được chọn mọi chế tài với cả vi phạm không cơ bản."],
+ note:""},
+{n:4,t:"Cạnh tranh",pages:"tr. 92–102",law:"Luật Cạnh tranh 23/2018/QH14 (hiệu lực 01/07/2019); Nghị định 35/2020/NĐ-CP",
+ goal:"Nắm thỏa thuận hạn chế cạnh tranh bị cấm, tiêu chí vị trí thống lĩnh/độc quyền, kiểm soát tập trung kinh tế, cạnh tranh không lành mạnh và tố tụng cạnh tranh.",
+ theory:["Thỏa thuận hạn chế cạnh tranh bị cấm (Điều 11): ấn định giá; phân chia khách hàng, thị trường, nguồn cung; hạn chế số lượng; thỏa thuận thắng thầu; ngăn cản doanh nghiệp khác tham gia thị trường; loại bỏ doanh nghiệp không tham gia thỏa thuận; hạn chế phát triển kỹ thuật, đầu tư; áp đặt điều kiện không liên quan… Khác Luật 2004: không còn cấm dựa trên thị phần kết hợp mà dựa trên tác động hạn chế cạnh tranh đáng kể.",
+ "Vị trí thống lĩnh: có sức mạnh thị trường đáng kể hoặc thị phần từ 30% trở lên trên thị trường liên quan (Điều 26). Nhóm doanh nghiệp thống lĩnh: 2 doanh nghiệp tổng thị phần từ 50%; 3 từ 65%; 4 từ 75%; 5 trở lên từ 85%. Vị trí độc quyền: không có doanh nghiệp nào cạnh tranh trên thị trường liên quan.",
+ "Hành vi bị cấm với doanh nghiệp thống lĩnh (Điều 27.1): bán hàng hóa, cung ứng dịch vụ dưới giá thành toàn bộ dẫn đến hoặc có khả năng dẫn đến loại bỏ đối thủ (điểm a); áp đặt giá mua, giá bán bất hợp lý hoặc ấn định giá bán lại tối thiểu gây hoặc có khả năng gây thiệt hại cho khách hàng (điểm b)… Doanh nghiệp độc quyền còn bị cấm áp đặt điều kiện bất lợi cho khách hàng, lợi dụng vị trí độc quyền để đơn phương thay đổi/hủy bỏ hợp đồng không có lý do chính đáng (Điều 27.2).",
+ "Tố tụng cạnh tranh: khiếu nại tới Ủy ban Cạnh tranh Quốc gia, thời hiệu 03 năm (Điều 77); tiếp nhận, xem xét trong 07 ngày làm việc (Điều 78); quyết định điều tra (Điều 80); thời hạn điều tra vụ việc hạn chế cạnh tranh 09 tháng (Điều 81.1); kết luận điều tra (Điều 88–89); Hội đồng xử lý vụ việc ra quyết định xử lý (Điều 91–92).",
+ "Xử lý vi phạm: cảnh cáo, phạt tiền — tối đa 10% tổng doanh thu trên thị trường liên quan trong năm tài chính liền kề (Điều 107); biện pháp khắc phục hậu quả (Điều 109); bồi thường thiệt hại theo Điều 110 thực hiện qua khởi kiện tại Tòa án — Ủy ban Cạnh tranh Quốc gia không quyết định bồi thường."],
+ ex:"Sách 2026 không có ví dụ tình huống riêng cho Phần 4 và không trích mức phạt cụ thể trong phần trình bày khung thủ tục.",
+ mistakes:["Kết luận vi phạm ngay khi thấy giá thấp/bất hợp lý mà không chứng minh vị trí thống lĩnh, thị trường liên quan và tính bất hợp lý.","Nhầm thời hạn điều tra (09 tháng là vụ việc hạn chế cạnh tranh).","Cho rằng Ủy ban Cạnh tranh Quốc gia có thẩm quyền buộc bồi thường thiệt hại."],
+ note:""},
+{n:5,t:"Giải quyết tranh chấp kinh doanh, thương mại",pages:"tr. 103–120",law:"BLTTDS 92/2015/QH13 (sửa bởi Luật 85/2025/QH15); Luật Trọng tài thương mại 54/2010/QH12; BLDS 2015; Luật Thương mại 2005",
+ goal:"Phân biệt 4 phương thức giải quyết tranh chấp; nắm thẩm quyền và điều kiện trọng tài; thẩm quyền Tòa án theo vụ việc, theo cấp, theo lãnh thổ và theo lựa chọn của nguyên đơn.",
+ theory:["4 phương thức: thương lượng, hòa giải, trọng tài thương mại, Tòa án. Tranh chấp KDTM thuộc thẩm quyền Tòa án gồm 5 nhóm tại Điều 30 BLTTDS (giữa cá nhân, tổ chức có đăng ký kinh doanh và đều có mục đích lợi nhuận; về sở hữu trí tuệ, chuyển giao công nghệ có mục đích lợi nhuận; nội bộ công ty…).",
+ "Trọng tài: chỉ giải quyết khi các bên có thỏa thuận trọng tài (Điều 5.1 Luật Trọng tài thương mại 2010), lập trước hoặc sau khi tranh chấp phát sinh, phải bằng văn bản (Điều 16). Đã có thỏa thuận trọng tài mà một bên khởi kiện thì Tòa án phải từ chối thụ lý, trừ thỏa thuận vô hiệu/không thể thực hiện (Điều 6). Phán quyết trọng tài là chung thẩm; thời hiệu khởi kiện trọng tài 02 năm nếu pháp luật chuyên ngành không quy định khác.",
+ "Thẩm quyền Tòa án theo cấp theo tổ chức hiện hành: TAND khu vực giải quyết sơ thẩm; TAND cấp tỉnh giải quyết phúc thẩm bản án, quyết định của TAND khu vực bị kháng cáo, kháng nghị và giám đốc thẩm, tái thẩm. Thẩm quyền theo lãnh thổ: Tòa án nơi bị đơn cư trú, làm việc hoặc có trụ sở; các bên chỉ được thỏa thuận bằng văn bản chọn Tòa án nơi nguyên đơn (Điều 39.1(b) BLTTDS) — thỏa thuận không mở rộng sang việc chọn cấp xét xử. Nguyên đơn có quyền lựa chọn Tòa án nơi hợp đồng được thực hiện (Điều 40.1(g)).",
+ "Kháng cáo: 15 ngày kể từ ngày tuyên án đối với bản án; 07 ngày đối với quyết định tạm đình chỉ, đình chỉ giải quyết vụ án."],
+ ex:"Ví dụ tr. 108 (Phần 5): trọng tài phải tạo điều kiện cho bị đơn trình bày quan điểm bảo vệ và ngược lại — minh họa nguyên tắc bình đẳng về quyền và nghĩa vụ (Điều 4 Luật Trọng tài thương mại 2010). Căn cứ vẫn đúng.",
+ mistakes:["Cho rằng các bên được tự do thỏa thuận chọn bất kỳ Tòa án nào, kể cả chọn cấp xét xử.","Cho rằng trung tâm trọng tài có thẩm quyền chỉ vì tranh chấp 'có yếu tố quốc tế' mà không có thỏa thuận trọng tài.","Quên yếu tố nước ngoài khi xác định thẩm quyền theo cấp."],
+ note:"Sách 2026 trích Luật 85/2025/QH15 sửa BLTTDS đúng một lần và KHÔNG liệt kê điều nào của BLTTDS bị sửa — trang này ghi rõ điểm đó, không suy diễn nội dung sửa đổi."},
+{n:6,t:"Phá sản",pages:"tr. 121–164",law:"Luật Phục hồi, phá sản 142/2025/QH15 (11/12/2025, hiệu lực 01/03/2026); NĐ 64/2026/NĐ-CP; NĐ 109/2026/NĐ-CP",
+ goal:"Nắm dấu hiệu nguy cơ/mất khả năng thanh toán theo luật mới, thủ tục phục hồi độc lập được ưu tiên, thủ tục phá sản, thẩm quyền TAND khu vực và thứ tự phân chia tài sản.",
+ theory:["Luật 142/2025 (8 chương, 88 điều) thay thế Luật Phá sản 51/2014. Điều 5.1: có nguy cơ mất khả năng thanh toán là không thanh toán được khoản nợ sẽ đến hạn trong 06 tháng hoặc khoản nợ đã đến hạn nhưng chưa quá 06 tháng. Điều 5.2: mất khả năng thanh toán là không thực hiện nghĩa vụ thanh toán khoản nợ sau thời hạn 06 THÁNG kể từ ngày đến hạn (luật cũ: 03 tháng). Phá sản là tình trạng mất khả năng thanh toán VÀ đã có quyết định tuyên bố phá sản của Tòa án (Điều 5.4).",
+ "Thủ tục phục hồi là thủ tục ĐỘC LẬP, được ưu tiên (Chương II; Điều 24): doanh nghiệp có nguy cơ mất hoặc đã mất khả năng thanh toán có thể tự nộp đơn yêu cầu áp dụng thủ tục phục hồi kèm phương án phục hồi. Nguyên tắc áp dụng: ưu tiên thủ tục phục hồi.",
+ "Thẩm quyền: TAND khu vực giải quyết vụ việc phục hồi, phá sản theo lãnh thổ (nơi doanh nghiệp có trụ sở chính); TAND cấp tỉnh xem xét lại, kháng nghị; TAND tối cao xem xét lại quyết định của cấp tỉnh và giải quyết tranh chấp thẩm quyền. TAND cấp cao đã bãi bỏ từ 01/07/2025; TAND cấp huyện được tổ chức lại thành TAND khu vực.",
+ "Thủ tục phục hồi: Chánh án phân công Thẩm phán trong 03 ngày làm việc; Thẩm phán xử lý đơn trong 12 ngày; trong 30 ngày kể từ ngày thụ lý, doanh nghiệp hoàn thiện phương án phục hồi; nghị quyết Hội nghị chủ nợ thông qua phương án khi có số chủ nợ đại diện từ 65% tổng số nợ của chủ nợ tham gia biểu quyết tán thành; Thẩm phán công nhận nghị quyết trong 07 ngày. Báo cáo thực hiện phương án định kỳ 03 tháng/lần. Phục hồi rút gọn (Điều 68–69): từ 20 chủ nợ không có bảo đảm trở xuống và tổng nợ gốc từ 10 tỷ đồng trở xuống, hoặc doanh nghiệp nhỏ, siêu nhỏ; nghị quyết chỉ cần từ 51%; thời hạn bằng một nửa thủ tục thông thường.",
+ "Thủ tục phá sản: trong 30 ngày kể từ ngày thụ lý đơn, Thẩm phán ra quyết định mở hoặc không mở thủ tục phá sản; chủ nợ gửi giấy đòi nợ trong 15 ngày kể từ ngày mở thủ tục; thứ tự phân chia tài sản (Điều 46): chi phí phá sản → nợ lương → nợ BHXH/BHTN/BHYT/bảo hiểm TNLĐ-BNN → trợ cấp thôi việc và quyền lợi khác của người lao động → nợ phát sinh nhằm mục đích phục hồi → nghĩa vụ tài chính với Nhà nước → nợ không có bảo đảm và phần nợ có bảo đảm chưa được thanh toán đủ. Giao dịch trong 06 tháng trước ngày mở thủ tục phá sản có thể bị coi là vô hiệu (18 tháng với người liên quan) — Điều 49–50. Cấm đảm nhiệm chức vụ 03 năm trong các trường hợp tại Điều 84."],
+ ex:"Sách 2026 không có ví dụ tình huống riêng cho Phần 6.",
+ mistakes:["Dùng ngưỡng 03 tháng của Luật Phá sản 2014 cho tình huống theo luật 2026.","Coi phục hồi là một giai đoạn bên trong thủ tục phá sản như luật cũ.","Cho rằng ngân hàng/chủ nợ được tự cưỡng chế thu nợ thay vì nộp đơn tới Tòa án.","Xác định thẩm quyền theo chi nhánh thay vì trụ sở chính."],
+ note:"Điểm cần kiểm lại khi đăng: Điều 6 Luật 142/2025 (thẩm quyền Tòa án) và tỷ lệ thông qua phương án phục hồi trong thủ tục phá sản cần đối chiếu văn bản gốc."},
+{n:7,t:"Lao động",pages:"tr. 165–181",law:"Bộ luật Lao động 45/2019/QH14 (hiệu lực 01/01/2021); Luật An toàn, vệ sinh lao động 84/2015/QH13",
+ goal:"Nắm HĐLĐ và thử việc, tiền lương và làm thêm giờ, thời giờ làm việc/nghỉ ngơi, chấm dứt HĐLĐ, kỷ luật lao động và thời hiệu tranh chấp lao động.",
+ theory:["Thử việc (Điều 24–27 BLLĐ 2019): là thỏa thuận, không bắt buộc; ghi trong HĐLĐ hoặc bằng hợp đồng thử việc riêng; không áp dụng với HĐLĐ dưới 01 tháng; chỉ thử việc 01 lần cho một công việc. Thời gian tối đa: 180 ngày (người quản lý doanh nghiệp), 60 ngày (công việc cần trình độ từ cao đẳng trở lên), 30 ngày (trung cấp, công nhân kỹ thuật, nhân viên nghiệp vụ), 06 ngày làm việc (công việc khác) — Điều 25. Lương thử việc ít nhất 85% mức lương của công việc đó (Điều 26). Trong thời gian thử việc, mỗi bên được hủy bỏ mà không cần báo trước và không phải bồi thường (Điều 27.2).",
+ "Loại HĐLĐ (Điều 20): xác định thời hạn không quá 36 tháng; khi HĐLĐ xác định thời hạn hết hạn mà người lao động vẫn làm việc thì chỉ được ký thêm 01 lần HĐLĐ xác định thời hạn, sau đó phải ký HĐLĐ không xác định thời hạn (Điều 20.2(c)). Phụ lục HĐLĐ không được sửa đổi thời hạn HĐLĐ (Điều 22.2).",
+ "Người lao động đơn phương chấm dứt HĐLĐ (Điều 35): không cần lý do, báo trước ít nhất 45 ngày (HĐLĐ không xác định thời hạn), 30 ngày (HĐLĐ xác định thời hạn 12–36 tháng), 03 ngày làm việc (dưới 12 tháng); các trường hợp tại Điều 35.3 được chấm dứt ngay không cần báo trước. Chấm dứt trái pháp luật: Điều 39–40.",
+ "Trợ cấp thôi việc (Điều 46): khi HĐLĐ chấm dứt theo các khoản 1, 2, 3, 4, 6, 7, 9, 10 Điều 34, người lao động làm việc thường xuyên từ đủ 12 tháng được trợ cấp mỗi năm 1/2 tháng lương; lương tính trợ cấp là bình quân 06 tháng liền kề. Trợ cấp mất việc làm (Điều 47): khi người sử dụng lao động cho thôi việc do thay đổi cơ cấu, công nghệ hoặc lý do kinh tế (Điều 42, Điều 34.11) — mỗi năm 01 tháng lương, tối thiểu 02 tháng lương. Thời gian tính trợ cấp theo Điều 8 NĐ 145/2020/NĐ-CP (tháng lẻ từ đủ 06 tháng tính bằng 01 năm).",
+ "Thời giờ làm việc bình thường không quá 08 giờ/ngày và 48 giờ/tuần (Điều 105.1). Làm thêm giờ (Điều 107.2): cần sự đồng ý của người lao động; không quá 50% số giờ bình thường trong 01 ngày, tổng không quá 12 giờ/ngày; không quá 40 giờ/tháng; không quá 200 giờ/năm (300 giờ/năm chỉ với các trường hợp tại Điều 107.3). Nghỉ ít nhất 24 giờ liên tục mỗi tuần (Điều 111.1).",
+ "Tiền lương làm thêm giờ (Điều 98): tính theo đơn giá tiền lương hoặc tiền lương THỰC TRẢ theo công việc đang làm — ngày thường ít nhất 150%, ngày nghỉ hằng tuần 200%, ngày lễ, tết 300%; làm việc ban đêm trả thêm ít nhất 30% tiền lương của ngày làm việc bình thường (Điều 98.2); làm thêm giờ vào ban đêm trả thêm 20% (Điều 98.3). Cách tính chi tiết tại Điều 55 NĐ 145/2020/NĐ-CP.",
+ "Thời hiệu tranh chấp lao động cá nhân (Điều 190 BLLĐ 2019): yêu cầu hòa giải viên lao động 06 tháng, yêu cầu Hội đồng trọng tài lao động 09 tháng, yêu cầu Tòa án 01 năm — kể từ ngày phát hiện hành vi vi phạm (Điều 190.3 đối với Tòa án)."],
+ ex:"Sách 2026 không có ví dụ tình huống riêng cho Phần 7 và không nêu số liệu lương tối thiểu vùng.",
+ mistakes:["Cho rằng thử việc là bắt buộc hoặc được thử việc nhiều lần; áp mức 180 ngày cho vị trí chuyên viên.","Tính lương thử việc/làm thêm giờ trên lương tối thiểu vùng thay vì lương của công việc/lương thực trả.","Nhầm trợ cấp thôi việc (Điều 46) với trợ cấp mất việc làm (Điều 47).","Tính thời hiệu từ ngày bắt đầu làm việc thay vì ngày phát hiện hành vi vi phạm."],
+ note:""}
+];
+
+/* ============ PHỤ LỤC 24 VĂN BẢN (theo §6 digest) ============ */
+var LAWS=[
+["Luật Doanh nghiệp","59/2020/QH14","HL 01/01/2021; ban hành 17/06/2020","Trụ cột Phần 1","◐"],
+["Luật sửa đổi, bổ sung một số điều của Luật Doanh nghiệp","76/2025/QH15","17/06/2025; HL 01/07/2025","Mới 2026 (chỉ trích dẫn trong sách)","✅"],
+["Nghị định về đăng ký doanh nghiệp","168/2025/NĐ-CP","30/06/2025; HL 01/07/2025","Mới 2026: thay thế NĐ 01/2021","✅"],
+["Nghị định về đăng ký doanh nghiệp (cũ)","01/2021/NĐ-CP","04/01/2021","Lịch sử: đã bị NĐ 168/2025 thay thế","❌"],
+["Nghị định quy định chi tiết một số điều của Luật Doanh nghiệp","47/2021/NĐ-CP","01/04/2021","Hướng dẫn LDN (sách 2025)","❌"],
+["Luật sửa đổi, bổ sung 9 luật","03/2022/QH15","11/01/2022; HL 01/03/2022","Sửa LDN + Luật Đầu tư (sách 2025)","❌"],
+["Luật Đầu tư","143/2025/QH15","HL 01/03/2026; thông qua tại Kỳ họp thứ 10 (11/12/2025)","Trụ cột Phần 2; thay thế Luật 61/2020","✅"],
+["Luật Đầu tư (cũ)","61/2020/QH14","17/06/2020; HL 01/01/2021","Lịch sử: đề ≤2024 ra theo luật này","❌"],
+["Luật sửa đổi Luật Đầu tư 2020","57/2024/QH15","29/11/2024","Lịch sử (sách 2025)","❌"],
+["Nghị định quy định chi tiết và hướng dẫn thi hành Luật Đầu tư","96/2026/NĐ-CP","31/3/2026","Mới 2026: hướng dẫn Luật 143/2025","✅"],
+["Nghị định quy định chi tiết một số điều của Luật Đầu tư (cũ)","31/2021/NĐ-CP","26/03/2021","Sách 2026 chỉ trích 1 lần (tr. 85) trong ngữ cảnh đã lỗi thời","◐"],
+["Bộ luật Dân sự","91/2015/QH13","24/11/2015","Phần 3 (hợp đồng) + Phần 5","◐"],
+["Luật Thương mại","36/2005/QH11","14/06/2005","Phần 3 + Phần 5","◐"],
+["Luật Cạnh tranh","23/2018/QH14","Thông qua 12/06/2018; HL 01/07/2019","Phần 4","✅"],
+["Nghị định quy định chi tiết một số điều của Luật Cạnh tranh","35/2020/NĐ-CP","24/03/2020","Hướng dẫn Luật Cạnh tranh","✅"],
+["Luật Phục hồi, phá sản","142/2025/QH15","11/12/2025; HL 01/03/2026; 8 chương, 88 điều","Mới 2026, thay thế Luật Phá sản 51/2014: toàn bộ Phần 6","✅"],
+["Luật Phá sản (cũ)","51/2014/QH13","19/06/2014; hết hiệu lực 01/03/2026","Lịch sử: đề ≤2024 ra theo luật này","❌"],
+["Nghị định thi hành Luật Phục hồi, phá sản","64/2026/NĐ-CP","2026 — ngày ban hành chưa xác minh (sách không cho)","Hướng dẫn thi hành quyết định tuyên bố phá sản","✅"],
+["Nghị định xử phạt VPHC trong lĩnh vực phục hồi, phá sản…","109/2026/NĐ-CP","2026 — ngày ban hành chưa xác minh (sách không cho)","Xử phạt VPHC trong phục hồi, phá sản","✅"],
+["Bộ luật Lao động","45/2019/QH14","20/11/2019; HL 01/01/2021","Phần 7","◐"],
+["Luật An toàn, vệ sinh lao động","84/2015/QH13","25/06/2015; HL 01/07/2016","Phần 7","✅"],
+["Bộ luật Tố tụng dân sự (2015, sửa bởi Luật 85/2025)","92/2015/QH13","25/11/2015; HL 01/07/2016","Phần 5: giải quyết tranh chấp tại Tòa án","◐"],
+["Luật sửa đổi BLTTDS, Luật TTHC, Luật Tư pháp người chưa thành niên, Luật Phá sản, Luật Hòa giải, đối thoại tại tòa án","85/2025/QH15","25/06/2025","Mới 2026 (chỉ trích dẫn; sách không liệt kê điều bị sửa)","✅"],
+["Luật Trọng tài thương mại","54/2010/QH12","17/06/2010; HL 01/01/2011","Phần 5: giải quyết tranh chấp tại trọng tài","◐"]
+];
+
+/* ============ FLASHCARDS & QUIZ ============ */
+var FLASH=[
+["Phần 1","Thời hạn góp vốn TNHH 2TV trở lên và CTCP?","90 ngày kể từ ngày được cấp GCN đăng ký doanh nghiệp (Điều 47.2, Điều 113.1 LDN 2020); chưa góp đủ thì chỉ có quyền tương ứng phần đã góp và công ty đăng ký điều chỉnh vốn điều lệ trong 30 ngày."],
+["Phần 1","ĐHĐCĐ quyết định bán tài sản từ bao nhiêu %?","Từ 35% tổng giá trị tài sản ghi trong báo cáo tài chính gần nhất (Điều 138.2(d)); nghị quyết cần từ 65% phiếu biểu quyết của cổ đông dự họp (Điều 148.3(d)). Điều kiện họp: lần 1 trên 50%, lần 2 từ 33%, lần 3 không phụ thuộc tỷ lệ (Điều 145)."],
+["Phần 2","Luật nền của Phần 2 trong sách 2026?","Luật Đầu tư 143/2025/QH15, hiệu lực 01/03/2026 — không phải 61/2020 + 57/2024."],
+["Phần 2","Dự án vốn 6.000 tỷ được ưu đãi cần điều kiện gì (luật 2020, đề cũ)?","Giải ngân tối thiểu 6.000 tỷ trong 03 năm và doanh thu tối thiểu 10.000 tỷ/năm hoặc sử dụng trên 3.000 lao động (Điều 15.2(c) Luật Đầu tư 2020). Đáp ứng nhiều điều kiện ưu đãi thì hưởng mức cao nhất (Điều 15.7)."],
+["Phần 3","Mức phạt vi phạm hợp đồng tối đa trong KDTM?","8% giá trị phần nghĩa vụ hợp đồng bị vi phạm, và chỉ áp dụng khi hợp đồng có thỏa thuận phạt (Điều 300, 301 Luật Thương mại)."],
+["Phần 3","Hỏng máy móc nội bộ có phải bất khả kháng?","Không. Bất khả kháng phải khách quan, không lường trước được, không khắc phục được (Điều 156.1 BLDS); sự cố thiết bị có thể phòng ngừa bằng bảo trì, dự phòng."],
+["Phần 4","Ngưỡng thị phần của vị trí thống lĩnh?","Từ 30% trở lên trên thị trường liên quan, hoặc có sức mạnh thị trường đáng kể (Điều 26 Luật Cạnh tranh 2018)."],
+["Phần 4","Thời hạn điều tra vụ việc hạn chế cạnh tranh?","09 tháng kể từ ngày ra quyết định điều tra (Điều 81.1 Luật Cạnh tranh 2018). Phạt tiền tối đa 10% tổng doanh thu trên thị trường liên quan (Điều 107)."],
+["Phần 5","Khi nào trọng tài có thẩm quyền?","Khi các bên có thỏa thuận trọng tài bằng văn bản, lập trước hoặc sau khi tranh chấp phát sinh (Điều 5.1, Điều 16 Luật Trọng tài thương mại 2010)."],
+["Phần 5","Các bên được thỏa thuận chọn Tòa án tới mức nào?","Chỉ được thỏa thuận bằng văn bản chọn Tòa án nơi nguyên đơn cư trú/làm việc/có trụ sở (Điều 39.1(b) BLTTDS) — không được chọn cấp xét xử."],
+["Phần 6","Ngưỡng mất khả năng thanh toán theo Luật 142/2025?","Không thanh toán khoản nợ sau 06 tháng kể từ ngày đến hạn (Điều 5.2) — luật cũ là 03 tháng. Chưa quá 06 tháng chỉ là có nguy cơ mất khả năng thanh toán (Điều 5.1)."],
+["Phần 6","Thủ tục phục hồi theo Luật 142/2025 khác luật cũ thế nào?","Là thủ tục độc lập, được ưu tiên (Chương II, Điều 24) — doanh nghiệp có nguy cơ mất khả năng thanh toán cũng tự nộp đơn được; không còn là một giai đoạn trong thủ tục phá sản."],
+["Phần 7","Thử việc tối đa cho công việc cần trình độ đại học?","60 ngày, chỉ 01 lần cho một công việc (Điều 25.2 BLLĐ 2019); lương thử việc ít nhất 85% lương của công việc đó (Điều 26)."],
+["Phần 7","Thời hiệu yêu cầu Tòa án giải quyết tranh chấp lao động cá nhân?","01 năm kể từ ngày phát hiện hành vi vi phạm (Điều 190.3 BLLĐ 2019); hòa giải viên 06 tháng, Hội đồng trọng tài lao động 09 tháng."]
+];
+var QUIZ=[
+{p:1,q:"Thành viên TNHH chưa góp đủ vốn sau 90 ngày thì có quyền thế nào?",o:["Giữ nguyên quyền theo tỷ lệ cam kết","Chỉ có quyền tương ứng với phần vốn đã góp","Đương nhiên bị loại khỏi công ty trong mọi trường hợp","Được gia hạn thêm 90 ngày tự động"],a:1,e:"Điều 47.3(b) LDN 2020. Chưa góp phần nào mới đương nhiên không còn là thành viên."},
+{p:1,q:"Nghị quyết ĐHĐCĐ về bán tài sản từ 35% cần tỷ lệ nào?",o:["Trên 50% phiếu của cổ đông dự họp","Từ 65% phiếu của cổ đông dự họp","75% tổng số phiếu bầu trong mọi trường hợp","100% cổ đông"],a:1,e:"Điều 148.3(d) LDN 2020, trừ Điều lệ quy định khác."},
+{p:2,q:"Phần 2 của sách CD1 2026 xây trên văn bản nào?",o:["Luật Đầu tư 61/2020 + 57/2024","Luật Đầu tư 143/2025/QH15","NĐ 31/2021 là chính","Luật Đầu tư 2014"],a:1,e:"Luật 143/2025, hiệu lực 01/03/2026; 61/2020 và 57/2024 không xuất hiện trong sách 2026."},
+{p:2,q:"Theo đề cũ (Luật Đầu tư 2020), dự án trồng giống vật nuôi thuộc ngành nghề ưu đãi tại điều nào?",o:["Điều 16.1(e)","Điều 15.7","Điều 32.1(a)","Điều 20"],a:0,e:"Điều 16.1(e): sản xuất giống cây trồng, giống vật nuôi, sản phẩm công nghệ sinh học. Điều 15.7 là nguyên tắc hưởng mức ưu đãi cao nhất."},
+{p:3,q:"Phạt vi phạm trong hợp đồng KDTM tối đa bao nhiêu?",o:["Không giới hạn","8% giá trị phần nghĩa vụ bị vi phạm","10% doanh thu","50% giá trị hợp đồng"],a:1,e:"Điều 301 Luật Thương mại; chỉ áp dụng khi có thỏa thuận phạt."},
+{p:3,q:"Điều kiện có hiệu lực của hợp đồng nằm ở điều nào của BLDS?",o:["Điều 385","Điều 117","Điều 400","Điều 156"],a:1,e:"Điều 117 BLDS 2015."},
+{p:4,q:"Bán dưới giá thành toàn bộ để loại bỏ đối thủ bị cấm tại điều nào?",o:["Điều 11","Điều 27.1(a)","Điều 77","Điều 110"],a:1,e:"Điều 27.1(a) Luật Cạnh tranh 2018 — với điều kiện doanh nghiệp có vị trí thống lĩnh."},
+{p:4,q:"Ai quyết định bồi thường thiệt hại do vi phạm cạnh tranh?",o:["Ủy ban Cạnh tranh Quốc gia","Tòa án, qua khởi kiện của bên bị thiệt hại","Hội đồng xử lý vụ việc","Bộ Công Thương"],a:1,e:"Điều 110 Luật Cạnh tranh: bồi thường theo pháp luật dân sự qua Tòa án; Ủy ban chỉ xử lý hành chính."},
+{p:5,q:"Tranh chấp được giải quyết bằng trọng tài khi nào?",o:["Khi tranh chấp có yếu tố nước ngoài","Khi các bên có thỏa thuận trọng tài","Khi một bên yêu cầu","Khi Tòa án chuyển sang"],a:1,e:"Điều 5.1 Luật Trọng tài thương mại 2010."},
+{p:5,q:"Từ 01/07/2025, cấp Tòa án nào đã bị bãi bỏ?",o:["TAND khu vực","TAND cấp tỉnh","TAND cấp cao","TAND tối cao"],a:2,e:"TAND cấp cao bị bãi bỏ; TAND cấp huyện tổ chức lại thành TAND khu vực."},
+{p:6,q:"Theo Luật 142/2025, doanh nghiệp mất khả năng thanh toán khi không trả nợ quá hạn bao lâu?",o:["03 tháng","06 tháng","12 tháng","30 ngày"],a:1,e:"Điều 5.2 Luật 142/2025 — đổi từ 03 tháng (Luật 2014) thành 06 tháng."},
+{p:6,q:"Thứ tự phân chia tài sản khi phá sản, khoản nào đứng đầu?",o:["Nợ thuế","Nợ không có bảo đảm","Chi phí phá sản","Nợ lương"],a:2,e:"Điều 46 Luật 142/2025: chi phí phá sản trước, rồi nợ lương, bảo hiểm, trợ cấp thôi việc…"},
+{p:7,q:"Lương thử việc tối thiểu bằng bao nhiêu % lương của công việc đó?",o:["70%","80%","85%","100%"],a:2,e:"Điều 26 BLLĐ 2019."},
+{p:7,q:"Người lao động theo HĐLĐ xác định thời hạn 12 tháng đơn phương chấm dứt phải báo trước bao lâu?",o:["03 ngày làm việc","15 ngày","30 ngày","45 ngày"],a:2,e:"Điều 35.2(a) BLLĐ 2019."}
+];
+var DIAG=[
+["Doanh nghiệp","Góp vốn CTCP chưa đủ sau 90 ngày: cổ phần chưa thanh toán được xử lý thế nào?",["Bị hủy ngay","Coi là cổ phần chưa bán, HĐQT được quyền bán","Chuyển thành nợ của công ty","Giữ nguyên vô thời hạn"],1],
+["Doanh nghiệp","Trường hợp nào KHÔNG phải căn cứ giải thể theo Điều 207.1?",["Hết thời hạn trong Điều lệ","Một cổ đông cá nhân qua đời","Bị thu hồi GCN đăng ký doanh nghiệp","Không đủ số thành viên tối thiểu 06 tháng liên tục"],1],
+["Đầu tư","(Câu hỏi về đề cũ 2023–2024, áp luật tại thời điểm ra đề) Dự án sân gôn theo Luật Đầu tư 2020 thuộc thẩm quyền chấp thuận của ai?",["Quốc hội","Thủ tướng","UBND cấp tỉnh","Bộ Kế hoạch và Đầu tư"],2],
+["Đầu tư","(Câu hỏi về đề cũ 2023–2024, áp luật tại thời điểm ra đề) Điều 15.7 Luật Đầu tư 2020 quy định gì?",["Mức ưu đãi cao nhất khi đáp ứng nhiều điều kiện","Thời hạn dự án 50 năm","Thẩm quyền UBND tỉnh","Ngành nghề cấm"],0],
+["Hợp đồng","Sự kiện bất khả kháng phải có đặc điểm nào?",["Do lỗi của một bên","Khách quan, không lường trước, không khắc phục được","Chỉ là thiên tai","Xảy ra trước khi giao kết"],1],
+["Hợp đồng","Có thỏa thuận phạt vi phạm thì bên bị vi phạm được yêu cầu gì?",["Chỉ phạt","Chỉ bồi thường","Cả phạt và bồi thường thiệt hại","Không được yêu cầu gì thêm"],2],
+["Cạnh tranh","Doanh nghiệp được coi là có vị trí độc quyền khi nào?",["Thị phần từ 30%","Không có doanh nghiệp nào khác cạnh tranh trên thị trường liên quan","Là doanh nghiệp nhà nước","Doanh thu lớn nhất ngành"],1],
+["Cạnh tranh","Thời hiệu khiếu nại vụ việc cạnh tranh là bao lâu?",["01 năm","02 năm","03 năm","05 năm"],2],
+["Tranh chấp","Thỏa thuận trọng tài phải lập bằng hình thức nào?",["Lời nói","Văn bản","Hành vi cụ thể","Mọi hình thức"],1],
+["Tranh chấp","Nguyên đơn được lựa chọn Tòa án nơi nào theo Điều 40.1(g) BLTTDS?",["Nơi hợp đồng được thực hiện","Nơi mình thích","Nơi có cảng biển","Nơi bị đơn sinh ra"],0],
+["Phá sản","Theo Luật 142/2025, khoản nợ quá hạn 4 tháng thì doanh nghiệp ở trạng thái nào?",["Đã phá sản","Mất khả năng thanh toán","Có nguy cơ mất khả năng thanh toán","Không có trạng thái gì"],2],
+["Lao động","Thời hiệu yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp cá nhân?",["06 tháng","09 tháng","01 năm","02 năm"],1]
+];
+var BANK=[
+["Phần 1 — Doanh nghiệp","Góp vốn không đủ/chậm góp vốn (Điều 36, 47, 113); chia lợi nhuận theo vốn thực góp (Điều 50.3); thẩm quyền ĐHĐCĐ/HĐQT (Điều 115, 138, 145, 148, 151, 153); chuyển nhượng cổ phần và sổ đăng ký cổ đông (Điều 120.3, 127); sáp nhập/hợp nhất (Điều 200, 201); giải thể và chia tài sản còn lại (Điều 207, 208)."],
+["Phần 2 — Đầu tư","Theo Luật Đầu tư 143/2025 (nội dung thi 2026): chấp thuận chủ trương — 20 loại dự án và phân cấp thẩm quyền (Điều 24–25); GCN đăng ký đầu tư (Điều 19, 26–27); ưu đãi và hỗ trợ đầu tư đặc biệt do Chính phủ quyết định (Điều 17); thủ tục đầu tư đặc biệt (Điều 28). Chỉ khi giải đề cũ 2023–2024 mới dùng Luật Đầu tư 2020 tại thời điểm ra đề (Điều 30–32, 36–39 về thẩm quyền/GCN; Điều 15, 16 về ưu đãi, mức cao nhất tại Điều 15.7; ưu đãi đặc biệt dự án vốn lớn tại Điều 15.2(c), Điều 20) — không dùng các số điều 2020 này cho kỳ thi 2026."],
+["Phần 3 — Hợp đồng","Hiệu lực hợp đồng và thỏa thuận tăng giá; vi phạm hợp đồng và bất khả kháng (Điều 156 BLDS); chế tài Luật Thương mại (Điều 297, 300–312). Thường xuất hiện lồng trong câu cạnh tranh/doanh nghiệp."],
+["Phần 4 — Cạnh tranh","Lạm dụng vị trí thống lĩnh/độc quyền (Điều 26, 27); bán dưới giá thành toàn bộ (Điều 27.1(a)); quy trình tố tụng cạnh tranh (Điều 77–92); xử phạt và bồi thường (Điều 107, 109, 110)."],
+["Phần 5 — Tranh chấp","Hợp pháp của thỏa thuận chọn Tòa án (Điều 38, 39 BLTTDS); điều kiện thẩm quyền trọng tài (Điều 5, 16 LTTTM); xác định Tòa án có thẩm quyền theo cấp và lãnh thổ (Điều 30, 35, 37, 39, 40 BLTTDS)."],
+["Phần 6 — Phá sản","Theo Luật Phục hồi, phá sản 142/2025 (nội dung thi 2026): dấu hiệu nguy cơ/mất khả năng thanh toán (Điều 5 — ngưỡng 06 tháng); thủ tục phục hồi độc lập được ưu tiên (Chương II, Điều 24); quyền/nghĩa vụ nộp đơn (Điều 38); thứ tự phân chia tài sản (Điều 46); thủ tục rút gọn (Điều 68–69); thẩm quyền TAND khu vực. Các khoảng điều của Luật Phá sản 2014 (Điều 5, 26–42, 80–96, 105) chỉ dùng khi giải đề cũ ≤2024 với nhãn luật tại thời điểm ra đề — không dùng cho kỳ thi 2026."],
+["Phần 7 — Lao động","Thử việc (Điều 24–27); loại HĐLĐ và ký tiếp (Điều 20); đơn phương chấm dứt và báo trước (Điều 35); trợ cấp thôi việc/mất việc làm (Điều 46, 47); thời giờ làm việc và lương làm thêm (Điều 98, 105, 107); thời hiệu (Điều 190)."]
+];
+</script>
+<script>
+/* ============ DỮ LIỆU: 20 CÂU GIẢI ĐỀ (theo báo cáo lời giải 2024 + 2023) ============ */
+var SOLUTIONS=[
+{id:"2024C-1",exam:"2024C",examLabel:"Đề 2024 — Chẵn",q:1,title:"Ưu đãi đầu tư đặc biệt + góp vốn CTCP chưa đủ",badge:"warn",
+problem:"Ý 1: CTCP Nguyên Y được chấp thuận chủ trương đầu tư ngày 01/10/2021, vốn 6.500 tỷ đồng; đến 10/5/2024 đã giải ngân 6.000 tỷ, dùng 3.500 lao động. Cục Thuế tỉnh M cho rằng còn thiếu 1.000 tỷ mới đủ điều kiện ưu đãi. Hỏi việc xử lý của cơ quan thuế có đúng không? Ý 2: CTCP Nam Việt vốn điều lệ 16 tỷ, cổ đông sáng lập Nguyễn Văn Việt nắm 51% nhưng mới góp vốn 10%, trong đó có tài sản là quyền sử dụng đất, và yêu cầu không làm giảm vốn điều lệ. Trình bày cách xử lý phần vốn, tài sản theo pháp luật doanh nghiệp. [Bản đề lỗi chữ ở ý 2 — xem Giới hạn dữ liệu.]",
+basis:"Ý 1: Điều 15.2(c) Luật Đầu tư 2020 — dự án vốn từ 6.000 tỷ trở lên, giải ngân tối thiểu 6.000 tỷ trong 03 năm kể từ ngày cấp GCN đăng ký đầu tư/chấp thuận chủ trương, đồng thời doanh thu tối thiểu 10.000 tỷ/năm HOẶC sử dụng trên 3.000 lao động; Điều 20 (ưu đãi đặc biệt); Điều 19 NĐ 31/2021. Ý 2: Điều 112, 113 (thanh toán cổ phần trong 90 ngày; Điều 113.3(a)–(d); trách nhiệm Điều 113.4) và Điều 36.2 (định giá tài sản góp vốn) LDN 2020.",
+apply:"Ý 1: quy mô 6.500 tỷ ≥ 6.000 tỷ — đạt; giải ngân 6.000 tỷ trước hạn 01/10/2024 — đạt; 3.500 lao động > 3.000 — đạt tiêu chí (ii), không cần xét doanh thu. Ngưỡng 'thiếu 1.000 tỷ' (tức đòi 7.000 tỷ) không có trong Điều 15.2(c) hay Điều 20. Ý 2 (theo giả thiết 10% là 10% số cổ phần đã đăng ký mua): ông Việt đăng ký mua 51% × 16 tỷ = 8,16 tỷ, mới thanh toán khoảng 0,816 tỷ. Hết 90 ngày chưa góp đủ: chỉ có quyền tương ứng phần đã thanh toán (Điều 113.3(b)); phần chưa thanh toán thành cổ phần chưa bán, HĐQT được quyền bán (Điều 113.3(c)); công ty phải đăng ký điều chỉnh vốn điều lệ bằng mệnh giá cổ phần đã thanh toán đủ trong 30 ngày, trừ khi bán hết phần chưa thanh toán (Điều 113.3(d)). Yêu cầu 'không giảm vốn điều lệ' chỉ thực hiện được nếu bán hết phần chưa thanh toán trong 30 ngày đó. Quyền sử dụng đất góp vốn phải định giá theo Điều 36.2; định giá cao hơn thực tế thì cổ đông sáng lập liên đới góp thêm phần chênh lệch.",
+conclude:"Ý 1: Cục Thuế xử lý không đúng — Nguyên Y đủ điều kiện ưu đãi theo Điều 15.2(c), khiếu nại có căn cứ. Ý 2: xử lý theo Điều 113.3–113.4 và Điều 36.2 như trên; HĐQT giám sát, đôn đốc thanh toán (Điều 113.1).",
+rubric:[["Ý 1: nêu đúng 3 điều kiện Điều 15.2(c)",0.5],["Ý 1: đối chiếu số liệu và kết luận Cục Thuế sai vì ngưỡng 7.000 tỷ không có căn cứ",0.5],["Ý 2: thời hạn 90 ngày và hậu quả Điều 113.3(a)–(c)",0.5],["Ý 2: xử lý vốn điều lệ trong 30 ngày + trách nhiệm Điều 113.4 + định giá Điều 36.2",0.5]],
+mistakes:"Quên điều kiện giải ngân 6.000 tỷ trong 3 năm hoặc quên tiêu chí 'hoặc' giữa doanh thu 10.000 tỷ và 3.000 lao động; cho rằng cổ đông chưa góp đủ vẫn giữ nguyên 51% quyền biểu quyết; cho rằng giữ nguyên vốn điều lệ được vô thời hạn.",
+limit:"Ý 1 đã kiểm định. Ý 2 CHƯA ĐẠT vì bản nguồn nhòe: không rõ 'mới góp vốn 10%' là 10% cổ phần đã góp của ông Việt hay 10% vốn điều lệ; thiếu ngày cấp GCN nên không kiểm được hạn 90 ngày; giá trị quyền sử dụng đất chưa biết. Khung pháp lý đã kiểm định; con số áp dụng là suy luận theo giả thiết đã nêu — không tự điền dữ kiện.",
+law2026:"Ý 1 không đổi (Luật Đầu tư 2025 sửa Điều 30–32 về thẩm quyền nhưng Điều 15.2(c) không đổi theo hướng ảnh hưởng câu này). Ý 2: thủ tục đăng ký thay đổi nay theo NĐ 168/2025/NĐ-CP thay NĐ 01/2021/NĐ-CP — chỉ đổi văn bản thủ tục."},
+{id:"2024C-2",exam:"2024C",examLabel:"Đề 2024 — Chẵn",q:2,title:"Lạm dụng vị trí độc quyền + vi phạm hợp đồng",badge:"warn",
+problem:"Công ty X là đơn vị duy nhất cung cấp xăng máy bay trên tất cả các sân bay Việt Nam. Máy bơm hỏng, X yêu cầu Công ty B (hãng hàng không, khách hàng của X) chấp nhận tăng giá và B đã đồng ý trong hợp đồng. Khi X tăng giá, B tìm nguồn cung khác; sau đó X ngừng cấp xăng vì sự cố máy bơm và cho rằng B vi phạm hợp đồng. Hỏi: (1) X có vi phạm pháp luật cạnh tranh không? (2) B có vi phạm hợp đồng không? B có quyền yêu cầu cơ quan thực thi luật cạnh tranh giải quyết bồi thường thiệt hại không? [Bản đề lẫn lộn tên các bên A/B/X — giả thiết làm việc: X = nhà cung cấp độc quyền, B = hãng hàng không khách hàng.]",
+basis:"Luật Cạnh tranh 2018: Điều 3.5; Điều 26 (vị trí độc quyền: không có doanh nghiệp nào khác cạnh tranh trên thị trường liên quan); Điều 27.1(b) (áp đặt giá bất hợp lý); Điều 27.2 (cấm doanh nghiệp độc quyền áp đặt điều kiện bất lợi, đơn phương thay đổi/hủy bỏ hợp đồng không có lý do chính đáng); Điều 77 (khiếu nại, thời hiệu 03 năm); Điều 107, 109, 110 (xử lý hành chính và bồi thường). BLDS 2015: Điều 156.1 (bất khả kháng), Điều 351, Điều 360–361. Điều 186 BLTTDS (khởi kiện tại Tòa án).",
+apply:"Ý 1: X có vị trí độc quyền (Điều 26). Yêu cầu tăng giá khi là nhà cung cấp duy nhất có dấu hiệu áp đặt giá bán bất hợp lý (Điều 27.1(b)) và áp đặt điều kiện bất lợi (Điều 27.2(b)); tuy nhiên 'bất hợp lý' phải chứng minh bằng phân tích chi phí/giá thị trường — kết luận ở mức có dấu hiệu vi phạm, cần Ủy ban Cạnh tranh Quốc gia điều tra. Đơn phương ngừng cấp vì sự cố thiết bị nội bộ không phải lý do chính đáng (Điều 27.2(c)). Ý 2: B không vi phạm — X vi phạm trước khi không cung cấp được; hỏng máy bơm là sự cố nội bộ có thể lường trước/khắc phục, không phải bất khả kháng (Điều 156.1, 351.2 BLDS), X phải bồi thường (Điều 360–361). Thỏa thuận tăng giá chỉ ràng buộc với lượng xăng X thực tế cung cấp được. Bồi thường thiệt hại: Ủy ban Cạnh tranh Quốc gia chỉ điều tra, xử lý hành chính (Điều 107, 109); bồi thường thực hiện theo Điều 110 qua khởi kiện tại Tòa án (Điều 186 BLTTDS); B có quyền khiếu nại tới Ủy ban theo Điều 77.",
+conclude:"X có dấu hiệu lạm dụng vị trí độc quyền — cần điều tra để kết luận dứt khoát; B không vi phạm hợp đồng, X mới là bên vi phạm và phải bồi thường; yêu cầu bồi thường thuộc Tòa án, không thuộc Ủy ban Cạnh tranh Quốc gia.",
+rubric:[["Ý 1: xác định X có vị trí độc quyền (Điều 26)",0.25],["Ý 1: phân tích áp đặt giá/điều kiện bất lợi (Điều 27.1(b), 27.2(b)) và lưu ý yếu tố 'bất hợp lý' cần chứng minh",0.5],["Ý 1: kết luận có dấu hiệu vi phạm, cần điều tra",0.25],["Ý 2: B không vi phạm vì X vi phạm trước; hỏng máy bơm không phải bất khả kháng (Điều 156.1, 351 BLDS)",0.5],["Ý 2: phân biệt thẩm quyền — Ủy ban xử lý hành chính, bồi thường thuộc Tòa án (Điều 77, 107, 110 LCT; Điều 186 BLTTDS)",0.5]],
+mistakes:"Kết luận ngay X vi phạm mà không phân tích thị trường liên quan và tính 'bất hợp lý'; cho rằng B vi phạm vì đã đồng ý tăng giá; nhầm Ủy ban Cạnh tranh Quốc gia có quyền buộc bồi thường; cho rằng hỏng máy bơm là bất khả kháng.",
+limit:"CHƯA ĐẠT: nguồn lẫn lộn các bên A/B/X tới mức không xác định chắc chắn ai là khách hàng, ai mua nguồn khác; yếu tố 'giá bất hợp lý' cần chứng cứ thị trường/chi phí. Cần đối chiếu bản in gốc trước khi công bố. Khung pháp lý đã kiểm định; kết luận dựa trên giả thiết đã nêu.",
+law2026:"Không đổi (Luật Cạnh tranh 2018, BLDS 2015, BLTTDS sửa bởi Luật 85/2025 — các điều viện dẫn không thay đổi nội dung liên quan)."},
+{id:"2024C-3",exam:"2024C",examLabel:"Đề 2024 — Chẵn",q:3,title:"Góp vốn TNHH chưa đủ + chia lợi nhuận",badge:"ok",
+problem:"D, E, F lập Công ty TNHH Hải Hưng, GCN đăng ký doanh nghiệp ngày 01/01/2024, vốn điều lệ 3 tỷ: D góp 1,2 tỷ tiền mặt (40%), E góp 1 tỷ bằng quyền sử dụng đất (33,33%), F góp 800 triệu bằng máy móc (26,67%). Đến hạn 01/04/2024 D chỉ góp 600 triệu; đến 01/10/2024 vẫn chưa góp đủ. Tháng 11/2024 HĐTV yêu cầu góp thêm vốn cho dự án mới, D không đồng ý. Lợi nhuận sau thuế 2024 là 300 triệu: D đòi chia 40% (120 triệu) theo GCN; F đề nghị chia đều mỗi người 100 triệu. Hỏi: (1) ai chịu trách nhiệm xác định giá trị tài sản góp vốn? (2) phương án chia của D, F có đúng không? (3) nếu ban lãnh đạo vi phạm quyền của thành viên, đề xuất phương án giải quyết.",
+basis:"LDN 2020: Điều 34, 35; Điều 36.1–36.2 (định giá tài sản góp vốn khi thành lập); Điều 47.2–47.4 (góp vốn 90 ngày và hậu quả); Điều 50.3, Điều 69 (chia lợi nhuận); Điều 49.2(d) (yêu cầu Tòa án hủy nghị quyết HĐTV trong 90 ngày); Điều 56 (thẩm quyền HĐTV). Điều 30 BLTTDS; Điều 5 Luật Trọng tài thương mại 2010.",
+apply:"Ý 1: tài sản góp vốn khi thành lập (quyền sử dụng đất của E, máy móc của F) do các thành viên sáng lập định giá theo nguyên tắc đồng thuận hoặc tổ chức thẩm định giá định giá (giá trị phải được trên 50% thành viên sáng lập chấp thuận) — Điều 36.2; tiền mặt không phải định giá; định giá cao hơn thực tế thì liên đới góp thêm chênh lệch. Ý 2: hết 90 ngày (01/04/2024) D chỉ góp 600 triệu nên chỉ có quyền tương ứng phần đã góp (Điều 47.3(b)). Vốn thực góp: D 600 triệu, E 1 tỷ, F 800 triệu = 2,4 tỷ → tỷ lệ D 25%, E 41,67%, F 33,33%. Chia 300 triệu: D 75 triệu, E 125 triệu, F 100 triệu. Cả hai phương án đều sai: D dùng tỷ lệ cam kết 40%; F chia đều trái Điều 50.3. D có quyền không góp thêm vốn ngoài cam kết; phần vốn D chưa góp (600 triệu) được chào bán theo nghị quyết HĐTV (Điều 47.3(c)); công ty phải đăng ký thay đổi vốn điều lệ về 2,4 tỷ trong 30 ngày kể từ 01/04/2024 (Điều 47.4). Ý 3: yêu cầu HĐTV họp lại, đăng ký thay đổi vốn điều lệ và chia lại lợi nhuận; thành viên từ 10% vốn điều lệ được yêu cầu Tòa án hủy nghị quyết HĐTV trong 90 ngày (Điều 49.2(d)), kiểm tra sổ sách (Điều 50); không giải quyết được thì khởi kiện tại Tòa án (Điều 30 BLTTDS) hoặc trọng tài nếu có thỏa thuận; D vẫn chịu trách nhiệm theo tỷ lệ đã cam kết với nghĩa vụ tài chính phát sinh trước ngày đăng ký thay đổi vốn điều lệ (Điều 47.4).",
+conclude:"Định giá do thành viên sáng lập đồng thuận hoặc tổ chức thẩm định giá (Điều 36.2). Chia đúng: D 75 triệu, E 125 triệu, F 100 triệu — cả hai phương án của D và F đều sai. Công ty phải đăng ký giảm vốn điều lệ về 2,4 tỷ và chào bán phần vốn D chưa góp.",
+rubric:[["Ý 1: chủ thể định giá (đồng thuận/tổ chức thẩm định giá + trên 50% chấp thuận) và trách nhiệm liên đới khi định giá cao",0.5],["Ý 2: xác định vốn thực góp và tỷ lệ D 25% / E 41,67% / F 33,33%",0.5],["Ý 2: kết luận cả hai phương án sai, tính đúng 75/125/100 triệu",0.5],["Ý 3: đăng ký thay đổi vốn + chào bán phần chưa góp + quyền yêu cầu hủy nghị quyết HĐTV (Điều 49.2(d), 90 ngày)",0.5]],
+mistakes:"Chia theo tỷ lệ trên GCN thay vì thực góp; chia đều; cho rằng HĐTV ép được D góp thêm; quên đăng ký thay đổi vốn điều lệ trong 30 ngày; nhầm chủ thể định giá là cơ quan nhà nước.",
+limit:"Đã kiểm định: các điều viện dẫn và phép tính (90 ngày → 01/04/2024; vốn thực góp 2,4 tỷ; chia 75/125/100 triệu) đã tính lại.",
+law2026:"Không đổi về nội dung. Thủ tục đăng ký thay đổi vốn điều lệ nay theo NĐ 168/2025/NĐ-CP thay NĐ 01/2021/NĐ-CP."},
+{id:"2024C-4",exam:"2024C",examLabel:"Đề 2024 — Chẵn",q:4,title:"Đơn yêu cầu mở thủ tục phá sản của ngân hàng",badge:"ok",
+problem:"Công ty TNHH Hưng Việt (trụ sở TP. Thủ Dầu Một, Bình Dương; chi nhánh bán gạch tại quận Hai Bà Trưng, Hà Nội) không thanh toán nợ cho Ngân hàng B đúng hạn từ 01/7/2024; sau 3 tháng nợ đến hạn, chi nhánh Hà Nội không thanh toán khoản vay nên Ngân hàng B yêu cầu thu nợ trước hạn. Hỏi: (1) Ngân hàng B có quyền đơn phương áp dụng yêu cầu thu nợ trước hạn không, căn cứ thế nào? (2) Khi nhận đơn, Tòa án có thẩm quyền thực hiện trình tự, thủ tục thế nào? (Hiểu 'đơn yêu cầu thu hồi nợ' là đơn yêu cầu mở thủ tục phá sản.)",
+basis:"Luật Phá sản 51/2014 (luật tại thời điểm ra đề): Điều 4.1 (mất khả năng thanh toán: không thanh toán khoản nợ trong 03 tháng kể từ ngày đến hạn); Điều 5.1 (quyền nộp đơn của chủ nợ không có bảo đảm/có bảo đảm một phần); Điều 5.3–5.4 (nghĩa vụ nộp đơn); Điều 8.2 (thẩm quyền TAND cấp huyện nơi có trụ sở chính); Điều 26–28, 31, 32, 38, 42 (hồ sơ, trả lại đơn, thụ lý, lệ phí, quyết định mở/không mở trong 30 ngày). Điều 44.1 LDN 2020 (chi nhánh không có tư cách pháp nhân).",
+apply:"Ý 1: nợ quá hạn từ 01/7/2024 quá 3 tháng → công ty mất khả năng thanh toán (Điều 4.1). Ngân hàng B là chủ nợ nên có quyền nộp đơn yêu cầu mở thủ tục phá sản (Điều 5.1) — đây không phải quyền tự cưỡng chế thu nợ; chỉ Tòa án mới mở được thủ tục phá sản. Chi nhánh Hà Nội không phải chủ thể độc lập (Điều 44.1 LDN) — nghĩa vụ trả nợ là của Hưng Việt và không làm thay đổi thẩm quyền. Ý 2: thẩm quyền là TAND TP. Thủ Dầu Một (Điều 8.2). Trình tự: nộp đơn kèm chứng cứ khoản nợ (Điều 26, 28) → Tòa án xem xét, trả lại đơn nếu không hợp lệ/không có quyền (Điều 31) hoặc thông báo nộp lệ phí phá sản, tạm ứng chi phí phá sản (Điều 38) → thụ lý khi có biên lai nộp phí (Điều 32) → trong 30 ngày kể từ ngày thụ lý, Thẩm phán quyết định mở hoặc không mở thủ tục phá sản (Điều 42.1), có thể họp với các bên để kiểm tra căn cứ (Điều 42.2–42.3).",
+conclude:"Theo luật tại thời điểm ra đề: Ngân hàng B có quyền nộp đơn (Điều 5.1); TAND TP. Thủ Dầu Một thực hiện trình tự nhận đơn → thông báo phí → thụ lý → quyết định trong 30 ngày. ĐÁP ÁN THEO LUẬT 2026 LÀ ĐÁP ÁN CHÍNH — xem mục Luật 2026.",
+rubric:[["Ý 1: xác định mất khả năng thanh toán theo luật tại thời điểm ra đề (Điều 4.1, quá hạn 3 tháng)",0.25],["Ý 1: quyền nộp đơn của ngân hàng (Điều 5.1) và lưu ý không được tự cưỡng chế thu nợ",0.5],["Ý 1: chi nhánh không có tư cách pháp nhân (Điều 44.1 LDN)",0.25],["Ý 2: thẩm quyền TAND TP. Thủ Dầu Một (Điều 8.2)",0.25],["Ý 2: trình tự nhận đơn → thông báo phí → thụ lý → quyết định trong 30 ngày (Điều 31, 32, 38, 42)",0.75]],
+mistakes:"Cho rằng ngân hàng tự ý thu nợ/cưỡng chế được; xác định sai thẩm quyền (Tòa Hà Nội vì chi nhánh, hoặc Tòa tỉnh); bỏ qua bước nộp lệ phí/tạm ứng chi phí và hạn 30 ngày; nhầm ngưỡng 3 tháng với thời hạn khác.",
+limit:"Đã kiểm định theo Luật Phá sản 2014. Thu hồi nợ trước hạn theo hợp đồng tín dụng là vấn đề riêng (BLDS, Luật Các tổ chức tín dụng), ngoài phạm vi môn này. Thẩm quyền Tòa án theo Điều 6 Luật 142/2025 cần đối chiếu lại khi đăng.",
+law2026:"ĐÁP ÁN THAY ĐỔI — đáp án chính theo luật 2026: Điều 5.2 Luật Phục hồi, phá sản 142/2025 — ngưỡng mất khả năng thanh toán là 06 tháng (trước đây 03 tháng); Điều 5.1 — chưa quá 06 tháng chỉ là có nguy cơ mất khả năng thanh toán. Mới quá hạn 3 tháng nên Hưng Việt chưa mất khả năng thanh toán: Ngân hàng B CHƯA có quyền nộp đơn phá sản; công ty có thể tự nộp đơn yêu cầu áp dụng thủ tục phục hồi (Điều 24 — thủ tục độc lập, được ưu tiên). Ngân hàng phải chờ đủ 06 tháng hoặc xử lý theo hợp đồng tín dụng."},
+{id:"2024C-5",exam:"2024C",examLabel:"Đề 2024 — Chẵn",q:5,title:"Thử việc: bắt buộc không, hình thức, thời gian, lương",badge:"ok",
+problem:"Tháng 08/2024, Công ty A tuyển chuyên viên Phòng Tài chính – kế toán (yêu cầu tốt nghiệp đại học). Chị Nguyễn Thị B trúng tuyển, ký HĐLĐ lần đầu xác định thời hạn 12 tháng, lương 20 triệu đồng/tháng. Công ty A đề nghị chị B thử việc trước khi ký HĐLĐ lần đầu. Hỏi: (1) người sử dụng lao động có bắt buộc thử việc không; thỏa thuận thử việc ghi luôn trong HĐLĐ hay phải lập hợp đồng thử việc riêng? (2) vị trí này được thử việc bao nhiêu lần, tối đa bao nhiêu ngày mỗi lần; lương thử việc thế nào?",
+basis:"BLLĐ 45/2019: Điều 24.1 (có thể thỏa thuận thử việc ghi trong HĐLĐ hoặc giao kết hợp đồng thử việc), Điều 24.2 (không thử việc với HĐLĐ dưới 01 tháng); Điều 25 (chỉ thử việc một lần; tối đa 180 ngày — người quản lý doanh nghiệp; 60 ngày — công việc cần trình độ từ cao đẳng trở lên; 30 ngày — trung cấp/công nhân kỹ thuật/nhân viên nghiệp vụ; 06 ngày làm việc — công việc khác); Điều 26 (lương thử việc ít nhất 85%); Điều 27 (kết thúc thử việc). Điều 4.24 LDN 2020 (người quản lý doanh nghiệp).",
+apply:"Ý 1: thử việc không bắt buộc — Điều 24.1 dùng 'có thể thỏa thuận'. Nếu thỏa thuận, ghi trong HĐLĐ hoặc lập hợp đồng thử việc riêng đều hợp pháp; HĐLĐ 12 tháng nên không thuộc trường hợp cấm thử việc tại Điều 24.2. Ý 2: chuyên viên không phải người quản lý doanh nghiệp (Điều 4.24 LDN) nên không áp mức 180 ngày; công việc cần trình độ đại học thuộc Điều 25.2: thử việc 01 lần, tối đa 60 ngày. Lương thử việc ít nhất 85% × 20 triệu = 17 triệu đồng/tháng (Điều 26); thỏa thuận dưới 17 triệu là trái pháp luật. Trong thử việc, mỗi bên được hủy bỏ không cần báo trước, không bồi thường (Điều 27.2); hết thử việc công ty phải thông báo kết quả (Điều 27.1).",
+conclude:"Thử việc không bắt buộc; ghi trong HĐLĐ hoặc hợp đồng riêng đều được. Vị trí chuyên viên (đại học): 01 lần, tối đa 60 ngày, lương thử việc tối thiểu 17 triệu đồng/tháng.",
+rubric:[["Ý 1: thử việc là thỏa thuận, không bắt buộc (Điều 24.1)",0.5],["Ý 1: hai hình thức ghi nhận đều hợp pháp",0.25],["Ý 2: chỉ 01 lần, tối đa 60 ngày (Điều 25.2); loại trừ mức 180 ngày vì không phải người quản lý doanh nghiệp",0.75],["Ý 2: lương thử việc ≥ 85%, tối thiểu 17 triệu đồng/tháng (Điều 26)",0.5]],
+mistakes:"Cho rằng thử việc bắt buộc hoặc phải lập hợp đồng riêng; áp mức 180 ngày cho mọi vị trí cần đại học; tính 85% trên lương tối thiểu vùng thay vì lương của công việc (20 triệu); cho rằng được thử việc nhiều lần.",
+limit:"Đã kiểm định (Điều 24–27 BLLĐ 2019; Điều 4.24 LDN 2020; 85% × 20 triệu = 17 triệu đã tính lại).",
+law2026:"Không đổi."},
+{id:"2024L-1",exam:"2024L",examLabel:"Đề 2024 — Lẻ",q:1,title:"ĐHĐCĐ không đủ điều kiện họp + thẩm quyền chấp thuận chủ trương (sân gôn)",badge:"ok",
+problem:"Ý 1: Ngày 30/11/2021, CTCP Vạn Phát muốn quyết định bán một phần tài sản trị giá 49% tổng giá trị tài sản của công ty. Công ty xử lý thế nào khi không đủ điều kiện tổ chức ĐHĐCĐ? Ý 2: Ngày 15/01/2021, CTCP A nộp hồ sơ xin chấp thuận chủ trương đầu tư dự án sân gôn và trò chơi điện tử có thưởng cho người nước ngoài đến Bộ Kế hoạch và Đầu tư để trình Thủ tướng. Bộ trả hồ sơ để hoàn thiện đúng thẩm quyền. Cho ý kiến về việc xem xét, chấp thuận chủ trương của cơ quan nhà nước.",
+basis:"LDN 2020: Điều 138.2(d) (ĐHĐCĐ quyết định đầu tư/bán tài sản từ 35%); Điều 145 (điều kiện tiến hành họp: lần 1 trên 50%, lần 2 từ 33% trong 30 ngày, lần 3 không phụ thuộc tỷ lệ trong 20 ngày); Điều 148.3(d) (nghị quyết từ 65%). Luật Đầu tư 2020: Điều 31.1(e) (Thủ tướng chấp thuận dự án casino, TRỪ trò chơi điện tử có thưởng cho người nước ngoài; Luật 2020 đã bỏ diện Thủ tướng với sân gôn); Điều 32.1(c) (UBND tỉnh chấp thuận dự án sân gôn); Điều 35, 36 (nơi nộp hồ sơ).",
+apply:"Ý 1: tài sản 49% vượt ngưỡng 35% nên thuộc thẩm quyền ĐHĐCĐ (Điều 138.2(d)) — HĐQT không tự quyết được. Không đủ điều kiện họp lần 1 thì triệu tập lần 2 trong 30 ngày (từ 33%), vẫn không đủ thì lần 3 trong 20 ngày, họp không phụ thuộc tỷ lệ (Điều 145); nghị quyết bán tài sản cần từ 65% phiếu của cổ đông dự họp (Điều 148.3(d)). Ý 2: sân gôn thuộc UBND cấp tỉnh (Điều 32.1(c)); trò chơi điện tử có thưởng cho người nước ngoài bị loại trừ khỏi diện Thủ tướng (Điều 31.1(e)). Toàn bộ dự án không thuộc diện Thủ tướng — nộp hồ sơ lên Bộ KH&ĐT để trình Thủ tướng là sai thẩm quyền; Bộ trả hồ sơ là đúng; công ty nộp cho Sở KH&ĐT nơi thực hiện dự án để trình UBND tỉnh (Điều 36).",
+conclude:"Bán tài sản 49% thuộc ĐHĐCĐ; không đủ tỷ lệ thì họp lại lần 2 (33%), lần 3 (không phụ thuộc tỷ lệ). Dự án thuộc UBND tỉnh, không phải Thủ tướng; Bộ KH&ĐT trả hồ sơ là đúng.",
+rubric:[["Ý 1: thẩm quyền ĐHĐCĐ do vượt 35% (Điều 138.2(d))",0.5],["Ý 1: trình tự họp lại lần 2/lần 3 và tỷ lệ 33%/không phụ thuộc (Điều 145)",0.5],["Ý 2: sân gôn thuộc UBND tỉnh (Điều 32.1(c)); trò chơi điện tử có thưởng loại trừ khỏi diện Thủ tướng (Điều 31.1(e))",0.5],["Ý 2: kết luận Bộ KH&ĐT trả hồ sơ đúng; nộp Sở KH&ĐT trình UBND tỉnh",0.5]],
+mistakes:"Cho rằng HĐQT quyết được việc bán tài sản 49%; cho rằng không đủ tỷ lệ thì không tổ chức ĐHĐCĐ được nữa; áp Luật Đầu tư 2014 cho rằng sân gôn thuộc Thủ tướng.",
+limit:"Đã kiểm định. Lưu ý nhỏ: mốc giá trị tài sản 31/12/2021 trong đề không khớp ngày quyết định 30/11/2021 — lời giải dùng giá trị 49% theo báo cáo tài chính gần nhất, không ảnh hưởng kết luận.",
+law2026:"Không đổi về nội dung (Luật Đầu tư 2025 sửa Điều 30–32 nhưng kết luận 'sân gôn thuộc UBND tỉnh' không thay đổi)."},
+{id:"2024L-2",exam:"2024L",examLabel:"Đề 2024 — Lẻ",q:2,title:"Bán dưới giá thành + quy trình tố tụng cạnh tranh",badge:"ok",
+problem:"Một công ty nhỏ ngành vận tải khiếu nại lên Ủy ban Cạnh tranh Quốc gia, tố cáo công ty lớn M cùng ngành dùng chính sách 'bán dưới giá thành' để loại bỏ đối thủ nhỏ. Hỏi: (1) quy trình điều tra của Ủy ban diễn ra thế nào? (2) hành vi vi phạm là gì và hình thức xử phạt nào áp dụng theo Luật Cạnh tranh 2018?",
+basis:"Luật Cạnh tranh 2018: Điều 26 (vị trí thống lĩnh: thị phần từ 30% hoặc sức mạnh thị trường đáng kể); Điều 27.1(a) (cấm bán dưới giá thành toàn bộ dẫn đến hoặc có khả năng dẫn đến loại bỏ đối thủ); Điều 77 (khiếu nại, thời hiệu 03 năm); Điều 78 (tiếp nhận trong 07 ngày làm việc); Điều 80 (quyết định điều tra); Điều 81.1 (điều tra 09 tháng); Điều 88–89 (kết luận điều tra); Điều 91–92 (Hội đồng xử lý); Điều 107 (cảnh cáo, phạt tiền tối đa 10% doanh thu trên thị trường liên quan); Điều 109, 110. Điều 8 NĐ 75/2019/NĐ-CP (phạt tiền 01%–10%).",
+apply:"Ý 1: khiếu nại (Điều 77) → Ủy ban xem xét hồ sơ trong 07 ngày làm việc, thông báo tiếp nhận hoặc yêu cầu bổ sung (Điều 78) → quyết định điều tra khi có dấu hiệu vi phạm (Điều 80), thu thập chứng cứ về thị trường liên quan, thị phần, giá thành toàn bộ → thời hạn điều tra 09 tháng (Điều 81.1) → báo cáo và kết luận điều tra (Điều 88–89) → Hội đồng xử lý vụ việc hạn chế cạnh tranh họp và ra quyết định xử lý (Điều 91–92) → các bên được khiếu nại quyết định xử lý và khởi kiện hành chính. Ý 2: hành vi chỉ cấu thành lạm dụng vị trí thống lĩnh (Điều 27.1(a)) khi chứng minh đủ: M có vị trí thống lĩnh; giá bán dưới giá thành toàn bộ; dẫn đến hoặc có khả năng dẫn đến loại bỏ đối thủ. Xử phạt: cảnh cáo hoặc phạt tiền 01%–10% tổng doanh thu trên thị trường liên quan (Điều 107; Điều 8 NĐ 75/2019), kèm biện pháp khắc phục hậu quả (Điều 109), tịch thu lợi nhuận từ hành vi vi phạm và nghĩa vụ bồi thường qua Tòa án (Điều 110).",
+conclude:"Quy trình: Điều 77 → 78 → 80 → 81.1 (09 tháng) → 88–89 → 91–92. Hành vi (nếu đủ yếu tố) là lạm dụng vị trí thống lĩnh — bán dưới giá thành toàn bộ; phạt cảnh cáo hoặc tiền 01%–10% doanh thu thị trường liên quan, kèm khắc phục hậu quả và bồi thường.",
+rubric:[["Ý 1: đủ các bước khiếu nại → tiếp nhận 07 ngày → quyết định điều tra → 09 tháng → kết luận → Hội đồng xử lý",1.0],["Ý 2: xác định đúng Điều 27.1(a) kèm 3 yếu tố cấu thành",0.5],["Ý 2: hình thức xử phạt (cảnh cáo/phạt tiền 01%–10% + khắc phục hậu quả + bồi thường)",0.5]],
+mistakes:"Cho rằng cứ bán giá thấp là vi phạm (quên vị trí thống lĩnh và 'giá thành toàn bộ'); nhầm thời hạn điều tra 60 ngày (đó là vụ việc cạnh tranh không lành mạnh); cho rằng Ủy ban quyết định bồi thường; nhầm mức phạt là 10% tổng doanh thu toàn công ty.",
+limit:"Đã kiểm định (Điều 26, 27.1(a), 77–92, 107, 109, 110 LCT 2018; Điều 8 NĐ 75/2019).",
+law2026:"Không đổi."},
+{id:"2024L-3",exam:"2024L",examLabel:"Đề 2024 — Lẻ",q:3,title:"Quyền cổ đông phản đối bán 51% vốn + yêu cầu giải thể",badge:"ok",
+problem:"CTCP ABC vốn điều lệ 50 tỷ: A 30%, B 40%, C 30%. HĐQT quyết định bán 51% vốn cho tập đoàn nước ngoài. A phản đối vì Điều lệ quy định quyết định quan trọng về chuyển nhượng vốn phải được ĐHĐCĐ thông qua với ít nhất 75% tổng số phiếu bầu, và cho rằng bán vốn làm mất quyền kiểm soát, ảnh hưởng uy tín, có nguy cơ lộ bí mật kinh doanh. Hỏi: (1) A có quyền phản đối không, cần làm những bước nào? (2) HĐQT thông qua mà không đưa ra ĐHĐCĐ có hợp pháp? (3) nếu bán vốn được thực hiện, A có quyền yêu cầu giải thể công ty không?",
+basis:"LDN 2020: Điều 115.2 (cổ đông/nhóm cổ đông từ 05%: yêu cầu triệu tập ĐHĐCĐ bất thường, đề cử, yêu cầu BKS kiểm tra); Điều 127.1 (cổ phần tự do chuyển nhượng); Điều 138.2 (thẩm quyền ĐHĐCĐ); Điều 140.3–140.6 (triệu tập ĐHĐCĐ bất thường); Điều 148.3 (từ 65%, trừ Điều lệ khác); Điều 151 (yêu cầu hủy nghị quyết trong 90 ngày); Điều 153.1 (HĐQT trừ các quyền thuộc ĐHĐCĐ); Điều 207.1–207.2 (trường hợp và điều kiện giải thể).",
+apply:"Ý 1: Có. A giữ 30% > 05% (Điều 115.2): yêu cầu HĐQT triệu tập ĐHĐCĐ bất thường (HĐQT phải triệu tập trong 30 ngày; không triệu tập thì BKS, rồi cổ đông tự triệu tập — Điều 140); yêu cầu BKS kiểm tra; yêu cầu Tòa án/Trọng tài hủy quyết định trái Điều lệ trong 90 ngày (Điều 151); biểu quyết phủ quyết — theo Điều lệ cần 75% nên B + C tối đa 70%, A một mình đủ ngăn chặn. Ý 2: Không hợp pháp vì hai lý do độc lập: trái Điều lệ (ngưỡng 75% thuộc ĐHĐCĐ) và vượt thẩm quyền (Điều 138.2, 153.1); cổ phần tự do chuyển nhượng (Điều 127.1) nên HĐQT không quyết thay cổ đông việc bán cổ phần của họ. Lập luận 'mất kiểm soát/uy tín/bí mật' là lập luận kinh doanh, không phải căn cứ pháp lý độc lập. Ý 3: Không. Điều 207.1 không có trường hợp nào xảy ra (còn đủ 3 cổ đông, không bị thu hồi GCN, chưa hết thời hạn, chưa có nghị quyết giải thể); pháp luật Việt Nam không cho cổ đông quyền đơn phương yêu cầu Tòa án giải thể vì bất đồng kinh doanh. Giải thể cần nghị quyết ĐHĐCĐ từ 65% (Điều 148.3(g)).",
+conclude:"A có quyền phản đối với đủ công cụ tại Điều 115.2, 140, 151 và quyền phủ quyết theo Điều lệ. Quyết định của HĐQT không hợp pháp. A không có quyền yêu cầu giải thể.",
+rubric:[["Ý 1: A có quyền phản đối vì 30% > 05% (Điều 115.2)",0.25],["Ý 1: các bước — triệu tập ĐHĐCĐ bất thường, yêu cầu BKS kiểm tra, yêu cầu hủy trong 90 ngày, phủ quyết theo ngưỡng 75% Điều lệ",0.5],["Ý 2: HĐQT không hợp pháp — trái Điều lệ và vượt thẩm quyền (Điều 138.2, 153.1)",0.5],["Ý 3: không có quyền yêu cầu giải thể — đối chiếu Điều 207.1; giải thể cần nghị quyết ĐHĐCĐ 65%",0.75]],
+mistakes:"Cho rằng A không phản đối được vì HĐQT đã biểu quyết; cho rằng A được yêu cầu Tòa án giải thể vì giữ 30%; dùng lập luận uy tín/thương hiệu thay căn cứ pháp lý; quên ngưỡng 75% của Điều lệ đủ để A phủ quyết một mình.",
+limit:"Đã kiểm định. Ghi chú: chưa có tiền lệ án lệ công khai đối chiếu thêm về phạm vi Điều 207.1(d), nhưng không làm đổi kết luận.",
+law2026:"Không đổi."},
+{id:"2024L-4",exam:"2024L",examLabel:"Đề 2024 — Lẻ",q:4,title:"Người tham gia thủ tục phá sản + phương án phục hồi không thực hiện được",badge:"ok",
+problem:"CTCP Lộc Phát (Hà Nội) nợ: thuế GTGT + TNDN 2 tỷ; Ngân hàng M 2 tỷ; thuê mặt bằng Trung tâm thương mại K 500 triệu; lương 80 người lao động 720 triệu; cá nhân, gia đình khác 300 triệu. Nợ Ngân hàng M đã quá hạn 3 tháng, Ngân hàng M nộp đơn yêu cầu mở thủ tục phá sản. Cổ đông: TNHH MTV Kato 40%, bà Nguyễn Huyền Trang 30%, còn lại 30%. Hỏi: (1) người tham gia thủ tục phá sản gồm những ai; ai có nghĩa vụ nộp đơn? (2) Hội nghị chủ nợ thông qua phương án phục hồi thực hiện trong 12 tháng; sau 11 tháng công ty không thực hiện được phương án, vẫn mất khả năng thanh toán — các chủ thể phải làm thủ tục gì tiếp theo theo Luật Phá sản 2014?",
+basis:"Luật Phá sản 51/2014 (luật tại thời điểm ra đề): Điều 4.1 (ngưỡng 03 tháng); Điều 4.10 (người tham gia thủ tục phá sản); Điều 5.1 (quyền của chủ nợ), 5.2 (người lao động/công đoàn), 5.3–5.4 (nghĩa vụ của người đại diện theo pháp luật, Chủ tịch HĐQT), 5.5 (cổ đông từ 20% cổ phần phổ thông, nắm giữ liên tục ít nhất 06 tháng); Điều 80, 81.2, 90–92 (Hội nghị chủ nợ và thông qua phương án phục hồi); Điều 87–89 (phương án, thời hạn tối đa 03 năm nếu Hội nghị không xác định); Điều 93 (giám sát); Điều 95, 96, 107.2 (đình chỉ phục hồi → tuyên bố phá sản); Điều 54 (thứ tự phân chia tài sản).",
+apply:"Ý 1: người tham gia (Điều 4.10): các chủ nợ (Ngân hàng M — có quyền nộp đơn theo Điều 5.1 nếu là chủ nợ không có bảo đảm/có bảo đảm một phần; cơ quan thuế; Trung tâm thương mại K; các cá nhân); 80 người lao động (quyền nộp đơn qua công đoàn — Điều 5.2); chính Lộc Phát; cổ đông Kato 40% và bà Trang 30% (quyền nộp đơn theo Điều 5.5 nếu giữ liên tục ≥06 tháng); Quản tài viên; Viện kiểm sát. Người có NGHĨA VỤ nộp đơn: người đại diện theo pháp luật (Điều 5.3) và Chủ tịch HĐQT (Điều 5.4); các chủ thể còn lại chỉ có quyền. Ý 2: phương án 12 tháng hợp lệ (Điều 89); thông qua khi Hội nghị hợp lệ (chủ nợ đại diện ít nhất 51% tổng số nợ không có bảo đảm — Điều 90) và quá nửa số chủ nợ không có bảo đảm có mặt, đại diện từ 65% tổng số nợ không có bảo đảm tán thành (Điều 91, 81.2), Thẩm phán công nhận (Điều 92). Giám sát theo Điều 93. Không thực hiện được phương án: Thẩm phán đình chỉ thủ tục phục hồi (Điều 95) và tuyên bố doanh nghiệp phá sản (Điều 96.2, 107.2), sau đó thanh lý và phân chia tài sản theo Điều 54. 'Không có người bảo lãnh' không phải điều kiện pháp lý của phương án phục hồi.",
+conclude:"Theo luật tại thời điểm ra đề: nghĩa vụ nộp đơn thuộc người đại diện theo pháp luật và Chủ tịch HĐQT; không thực hiện được phương án thì đình chỉ phục hồi → tuyên bố phá sản → thanh lý theo Điều 54. ĐÁP ÁN THEO LUẬT 2026 LÀ ĐÁP ÁN CHÍNH — xem mục Luật 2026.",
+rubric:[["Ý 1: liệt kê đúng các nhóm người tham gia (chủ nợ, người lao động, doanh nghiệp, cổ đông, Quản tài viên, VKS)",0.5],["Ý 1: phân biệt quyền nộp đơn (Điều 5.1, 5.2, 5.5) với nghĩa vụ nộp đơn (Điều 5.3–5.4)",0.5],["Ý 2: điều kiện thông qua phương án (51% dự họp; quá nửa chủ nợ + 65% nợ tán thành; thời hạn 12 tháng hợp lệ)",0.5],["Ý 2: đình chỉ phục hồi → tuyên bố phá sản → thanh lý, phân chia theo Điều 54",0.5]],
+mistakes:"Cho rằng Ngân hàng M có nghĩa vụ nộp đơn; bỏ sót cổ đông ≥20% và cơ quan thuế, người lao động; quên điều kiện 65% tổng số nợ; cho rằng hết 12 tháng thì tự động gia hạn; bịa điều kiện 'phải có người bảo lãnh'.",
+limit:"Đã kiểm định theo Luật Phá sản 2014.",
+law2026:"ĐÁP ÁN THAY ĐỔI — đáp án chính theo luật 2026: (1) ngưỡng mất khả năng thanh toán là 06 tháng (Điều 5.2 Luật 142/2025) — mới quá hạn 3 tháng nên Lộc Phát chưa mất khả năng thanh toán, đơn của Ngân hàng M chưa đủ điều kiện; công ty chỉ có nguy cơ mất khả năng thanh toán (Điều 5.1). (2) Thủ tục phục hồi là thủ tục độc lập được ưu tiên (Điều 24), không còn là giai đoạn trong thủ tục phá sản. (3) Nghĩa vụ nộp đơn theo Điều 38 Luật 142/2025: người đại diện theo pháp luật, HĐQT CTCP, HĐTV… (trừ trường hợp đã nộp đơn yêu cầu phục hồi)."},
+{id:"2024L-5",exam:"2024L",examLabel:"Đề 2024 — Lẻ",q:5,title:"Chấm dứt trong thử việc + đơn phương chấm dứt HĐLĐ 12 tháng",badge:"ok",
+problem:"Ngày 01/03/2024, Công ty TNHH HP tuyển chị Đào Thị Lệ Q làm chuyên viên Ban tài chính, thử việc 60 ngày; nếu thành công sẽ ký HĐLĐ lần đầu 12 tháng. (1) Mới hết 01 tháng thử việc, chị Q thấy không phù hợp, không đến làm và không thông báo — chị có phải thông báo khi không muốn làm tiếp không? (2) Giả sử thử việc thành công, ký HĐLĐ 12 tháng; sau 06 tháng, do xung đột với lãnh đạo và thấy không phù hợp, chị Q muốn chấm dứt HĐLĐ — có quyền đơn phương chấm dứt không, có phải báo trước không, bao nhiêu ngày?",
+basis:"BLLĐ 2019: Điều 25.2 (thử việc tối đa 60 ngày với công việc cần trình độ từ cao đẳng trở lên); Điều 26 (lương thử việc); Điều 27.2 (trong thử việc, mỗi bên hủy bỏ không cần báo trước, không bồi thường); Điều 35.2(a) (HĐLĐ xác định thời hạn 12–36 tháng: báo trước ít nhất 30 ngày); Điều 35.3 (các trường hợp chấm dứt ngay không cần báo trước); Điều 39–40 (chấm dứt trái pháp luật và hậu quả).",
+apply:"Ý 1: Không phải thông báo. Đang trong thời gian thử việc 60 ngày nên Điều 27.2 áp dụng: hủy bỏ không cần báo trước, không bồi thường. Lưu ý thực hành: nên thông báo để đối chiếu thanh toán lương những ngày đã làm (Điều 26). Ý 2: Có quyền đơn phương chấm dứt không cần lý do (điểm mới của BLLĐ 2019 so với BLLĐ 2012) nhưng phải báo trước ít nhất 30 ngày (Điều 35.2(a)). 'Xung đột với lãnh đạo' và 'không phù hợp' không thuộc các trường hợp chấm dứt ngay tại Điều 35.3. Nghỉ ngay không báo trước là chấm dứt trái pháp luật (Điều 39): không được trợ cấp thôi việc, bồi thường nửa tháng lương và khoản tiền tương ứng tiền lương những ngày không báo trước (Điều 40).",
+conclude:"Trong thử việc: không cần báo trước (Điều 27.2). Sau khi ký HĐLĐ 12 tháng: được đơn phương chấm dứt không cần lý do nhưng phải báo trước ít nhất 30 ngày (Điều 35.2(a)).",
+rubric:[["Ý 1: không phải thông báo — Điều 27.2",0.75],["Ý 1: lưu ý lương thử việc vẫn phải trả cho ngày đã làm (Điều 26)",0.25],["Ý 2: có quyền đơn phương chấm dứt không cần lý do",0.25],["Ý 2: phải báo trước ít nhất 30 ngày (Điều 35.2(a))",0.5],["Ý 2: xung đột với lãnh đạo không thuộc Điều 35.3; hậu quả nếu nghỉ không báo trước (Điều 39–40)",0.25]],
+mistakes:"Cho rằng trong thử việc vẫn phải báo trước; áp BLLĐ 2012 đòi lý do chính đáng; nhầm báo trước 45 ngày (HĐLĐ không xác định thời hạn) hoặc 03 ngày làm việc (HĐLĐ dưới 12 tháng).",
+limit:"Đã kiểm định (Điều 24–27, 35, 39, 40 BLLĐ 2019).",
+law2026:"Không đổi."}
+];
+</script>
+<script>
+SOLUTIONS.push(
+{id:"2023C-1",exam:"2023C",examLabel:"Đề 2023 — Chẵn",q:1,title:"Nhà đầu tư Đài Loan: chấp thuận chủ trương, GCN đăng ký đầu tư, ưu đãi",badge:"ok",
+problem:"Nhà đầu tư Đài Loan xin thành lập tổ chức kinh tế 100% vốn nước ngoài để xây dựng tổ hợp sản xuất, nhân và lai tạo giống Gà, Bò, Lợn công nghệ cao tại huyện Lương Sơn, tỉnh Hòa Bình, diện tích đất 50 ha. Hỏi: (1) dự án có phải xin chấp thuận chủ trương đầu tư không, thẩm quyền của cơ quan nào; có phải cấp GCN đăng ký đầu tư không; nộp hồ sơ tại đâu? (2) phân tích ưu đãi đầu tư cho dự án.",
+basis:"Luật Đầu tư 2020: Điều 30 (Quốc hội), Điều 31 (Thủ tướng — không gồm dự án chăn nuôi/giống vật nuôi); Điều 32.1(a) (UBND tỉnh chấp thuận dự án có đề nghị Nhà nước giao đất, cho thuê đất không qua đấu giá, đấu thầu hoặc nhận chuyển nhượng, hoặc đề nghị chuyển mục đích sử dụng đất); Điều 36 (nộp hồ sơ cho cơ quan đăng ký đầu tư); Điều 37.1(a) (dự án của nhà đầu tư nước ngoài phải cấp GCN đăng ký đầu tư); Điều 39 (Sở KH&ĐT là cơ quan đăng ký đầu tư với dự án ngoài khu); Điều 15.1, 15.2 (hình thức, đối tượng ưu đãi), Điều 15.7 (hưởng mức ưu đãi cao nhất); Điều 16.1(a) (công nghệ cao, R&D), 16.1(e) (sản xuất giống cây trồng, giống vật nuôi, sản phẩm công nghệ sinh học), 16.2 (địa bàn ưu đãi). Phụ lục II, III NĐ 31/2021.",
+apply:"Ý 1: Có phải chấp thuận chủ trương theo Điều 32.1(a) — nhà đầu tư nước ngoài không sở hữu đất, dự án 50 ha tất yếu đề nghị Nhà nước giao/cho thuê đất hoặc chuyển mục đích sử dụng đất (giả thiết: không qua đấu giá, đấu thầu/nhận chuyển nhượng). Diện tích 50 ha không đổi thẩm quyền (không có ngưỡng 50 ha trong Điều 30–32). Thẩm quyền: UBND tỉnh Hòa Bình. Có phải cấp GCN đăng ký đầu tư (Điều 37.1(a)), trước khi thành lập tổ chức kinh tế 100% vốn nước ngoài. Nộp hồ sơ tại Sở KH&ĐT tỉnh Hòa Bình (Điều 36, 39); GCN được cấp sau quyết định chấp thuận chủ trương. Ý 2: ưu đãi trên hai căn cứ độc lập (Điều 15.2(a)–(b)): ngành nghề — Điều 16.1(e) (sản xuất giống vật nuôi) và 16.1(a) (công nghệ cao nếu được công nhận); địa bàn — Điều 16.2 (Lương Sơn thuộc Danh mục Phụ lục III hay không chưa xác minh — xem Giới hạn dữ liệu). Hình thức ưu đãi tại Điều 15.1; đáp ứng nhiều mức thì hưởng mức cao nhất (Điều 15.7). Mức thuế TNDN cụ thể thuộc Luật Thuế TNDN — ngoài phạm vi môn này.",
+conclude:"Phải xin chấp thuận chủ trương của UBND tỉnh Hòa Bình; phải cấp GCN đăng ký đầu tư; nộp hồ sơ tại Sở KH&ĐT tỉnh Hòa Bình. Dự án thuộc diện ưu đãi về ngành nghề (Điều 16.1(a), (e)), có thể thêm về địa bàn (Điều 16.2).",
+rubric:[["Ý 1: phải xin chấp thuận + thẩm quyền UBND tỉnh Hòa Bình (Điều 32.1(a))",0.5],["Ý 1: phải cấp GCN đăng ký đầu tư (Điều 37.1(a)) + nộp tại Sở KH&ĐT Hòa Bình (Điều 36, 39)",0.5],["Ý 2: ngành nghề ưu đãi (Điều 16.1(a), (e))",0.5],["Ý 2: địa bàn ưu đãi (Điều 16.2) + hình thức ưu đãi (Điều 15.1) và mức cao nhất (Điều 15.7)",0.5]],
+mistakes:"Cho rằng 'chỉ là chăn nuôi' nên không phải chấp thuận; nhầm thẩm quyền Thủ tướng/Bộ KH&ĐT; cho rằng nhà đầu tư nước ngoài không cần GCN; không tách căn cứ ngành nghề và địa bàn.",
+limit:"Đã kiểm định, với hai ghi chú: (1) giả thiết đất giao/cho thuê không qua đấu giá, đấu thầu — đề không nêu phương thức sử dụng đất; (2) Lương Sơn có thuộc Phụ lục III NĐ 31/2021 hay không CHƯA XÁC MINH — kết luận ưu đãi chỉ dựa trên căn cứ ngành nghề (Điều 16.1).",
+law2026:"Không đổi về nội dung (Luật Đầu tư 2025 sửa Điều 30–32 nhưng thẩm quyền UBND tỉnh và ưu đãi Điều 15/16 không đổi). Cơ quan đăng ký đầu tư nay là Sở Tài chính theo tổ chức bộ máy mới."},
+{id:"2023C-2",exam:"2023C",examLabel:"Đề 2023 — Chẵn",q:2,title:"Giải thể CTCP khi cổ đông qua đời + chia tài sản còn lại",badge:"ok",
+problem:"CTCP Hoạt Bát vốn điều lệ 60 tỷ: ông Ba 30%, ông Bốn 30%, TNHH MTV Năm Sao 40%. Tháng 4/2023 ông Ba qua đời vì tai nạn. Tổng tài sản 66 tỷ; nợ nhà nước 28 tỷ; nợ chủ nợ không có bảo đảm 36 tỷ; không nợ lương người lao động. Hỏi: (1) các trường hợp doanh nghiệp bị giải thể theo LDN 2020? (2) Hoạt Bát có thể bị giải thể trong trường hợp nào? (3) sau giải thể cổ đông có được chia tài sản còn lại không, mỗi cổ đông bao nhiêu?",
+basis:"LDN 2020: Điều 111.3 (CTCP tối thiểu 03 cổ đông); Điều 127 (thừa kế cổ phần — người thừa kế theo di chúc hoặc theo pháp luật trở thành cổ đông); Điều 148.3(g) (nghị quyết giải thể từ 65%); Điều 207.1(a)–(d) (các trường hợp giải thể), 207.2 (điều kiện giải thể); Điều 208.2 (thứ tự thanh toán: nợ lương/trợ cấp/bảo hiểm → nợ thuế → các khoản nợ khác; phần còn lại chia theo tỷ lệ cổ phần).",
+apply:"Ý 1: bốn trường hợp tại Điều 207.1(a)–(d). Ý 2: không trường hợp nào xảy ra — chưa hết thời hạn Điều lệ; chưa có nghị quyết ĐHĐCĐ; cổ phần 30% của ông Ba được thừa kế nên công ty vẫn đủ 03 cổ đông (Điều 127, 111.3); không bị thu hồi GCN. Cái chết của cổ đông không phải căn cứ giải thể. Ý 3 (giả thiết giải thể theo nghị quyết ĐHĐCĐ): thanh toán theo Điều 208.2 — nợ người lao động 0; nợ thuế/nhà nước 28 tỷ; nợ khác 36 tỷ; tổng nợ 64 tỷ. Còn lại 66 − 64 = 2 tỷ (giả thiết chi phí giải thể bằng 0 vì đề không cho). Chia: người thừa kế của ông Ba 30% = 0,6 tỷ; ông Bốn 0,6 tỷ; Năm Sao 40% = 0,8 tỷ.",
+conclude:"Hoạt Bát không bị giải thể trong tình huống này. Nếu giải thể theo nghị quyết ĐHĐCĐ thì còn 2 tỷ, chia 0,6 / 0,6 / 0,8 tỷ.",
+rubric:[["Ý 1: nêu đủ 4 trường hợp Điều 207.1",0.5],["Ý 2: kết luận không giải thể + thừa kế cổ phần (Điều 127) và đủ số cổ đông tối thiểu",0.75],["Ý 3: thứ tự thanh toán (Điều 208.2), tính đúng còn 2 tỷ và chia 0,6/0,6/0,8 tỷ",0.75]],
+mistakes:"Cho rằng cổ đông chết thì công ty phải giải thể; chia tài sản trước khi trả nợ; nhầm thứ tự (trả chủ nợ không bảo đảm trước nợ thuế); chia cho ông Ba thay vì người thừa kế.",
+limit:"Đã kiểm định (phép tính 66 − 28 − 36 = 2 đã tính lại).",
+law2026:"Không đổi."},
+{id:"2023C-3",exam:"2023C",examLabel:"Đề 2023 — Chẵn",q:3,title:"Quyền/nghĩa vụ nộp đơn phá sản + thủ tục rút gọn",badge:"ok",
+problem:"Công ty TNHH Hồng Ngọc (quận Thanh Xuân, Hà Nội) gồm bà Hồng (Chủ tịch HĐTV kiêm Giám đốc) và bà Ngọc. Công ty không thanh toán được khoản nợ quá hạn 1 năm là 5 tỷ (không có bảo đảm) và nợ lương người lao động 1 tỷ đã quá hạn 6 tháng; công đoàn cơ sở nhiều lần đòi lương không được giải quyết. Bà Ngọc nộp đơn yêu cầu mở thủ tục phá sản tại TAND quận Thanh Xuân. Hỏi: (1) chủ thể nào có quyền nộp đơn? (2) bà Ngọc và bà Hồng có nghĩa vụ nộp đơn không? (3) nếu công ty không còn tiền hay tài sản, Tòa án có giải quyết theo thủ tục rút gọn được không?",
+basis:"Luật Phá sản 51/2014 (luật tại thời điểm ra đề): Điều 4.1 (ngưỡng 03 tháng); Điều 5.1 (quyền của chủ nợ không có bảo đảm/có bảo đảm một phần), 5.2 (người lao động, công đoàn), 5.3 (nghĩa vụ của người đại diện theo pháp luật), 5.4 (nghĩa vụ của Chủ tịch HĐTV TNHH 2TV trở lên); khoản 5 về cổ đông ≥20% chỉ áp dụng cho CTCP; Điều 8.2 (TAND cấp huyện nơi có trụ sở chính); Điều 31 (trả lại đơn khi người nộp đơn không có quyền); Điều 105 (thủ tục rút gọn; tuyên bố phá sản trong 30 ngày kể từ ngày thụ lý).",
+apply:"Ý 1: công ty đã mất khả năng thanh toán. Có quyền nộp đơn: các chủ nợ không có bảo đảm của khoản nợ 5 tỷ (Điều 5.1); người lao động bị nợ lương và công đoàn cơ sở (Điều 5.2). Ý 2: bà Hồng CÓ nghĩa vụ — Chủ tịch HĐTV (Điều 5.4) và, nếu là người đại diện theo pháp luật, Điều 5.3; bà đã không thực hiện nghĩa vụ. Bà Ngọc KHÔNG có quyền cũng không có nghĩa vụ — thành viên TNHH thường không thuộc Điều 5; đơn của bà có thể bị trả lại (Điều 31). Thẩm quyền TAND quận Thanh Xuân là đúng (Điều 8.2). Ý 3: Được — Điều 105.1 áp dụng khi doanh nghiệp mất khả năng thanh toán mà không còn tiền, tài sản để nộp lệ phí phá sản, tạm ứng chi phí phá sản (Tòa án phải xác minh); Tòa án tuyên bố phá sản trong 30 ngày kể từ ngày thụ lý (Điều 105.2), không qua đầy đủ thủ tục thông thường.",
+conclude:"Có quyền nộp đơn: chủ nợ không có bảo đảm và người lao động/công đoàn. Bà Hồng có nghĩa vụ nhưng không thực hiện; bà Ngọc không có quyền/nghĩa vụ nên đơn có thể bị trả lại. Áp dụng được thủ tục rút gọn theo Điều 105.",
+rubric:[["Ý 1: chủ nợ không có bảo đảm (Điều 5.1) + người lao động/công đoàn (Điều 5.2), kèm ngưỡng Điều 4.1",0.5],["Ý 2: bà Hồng có nghĩa vụ (Điều 5.3–5.4)",0.5],["Ý 2: bà Ngọc không có quyền/nghĩa vụ; hệ quả trả lại đơn (Điều 31)",0.5],["Ý 3: thủ tục rút gọn (Điều 105.1) + tuyên bố phá sản trong 30 ngày (Điều 105.2), kèm điều kiện xác minh",0.5]],
+mistakes:"Cho rằng mọi thành viên đều có quyền nộp đơn; áp khoản 5 Điều 5 (cổ đông ≥20%) cho công ty TNHH; cho rằng bà Hồng không có nghĩa vụ; quên điều kiện cụ thể của thủ tục rút gọn.",
+limit:"Đã kiểm định theo Luật Phá sản 2014. Thẩm quyền Tòa án theo Điều 6 Luật 142/2025 cần đối chiếu lại (tổ chức Tòa án thay đổi từ 01/07/2025).",
+law2026:"Kết luận chính không đổi: nợ quá hạn 1 năm và nợ lương quá hạn 6 tháng đều vượt ngưỡng 06 tháng của Điều 5.2 Luật 142/2025; quyền/nghĩa vụ nộp đơn theo Điều 38 Luật 142/2025 tương tự; luật mới cũng có thủ tục phá sản rút gọn (điều khoản cụ thể cần đối chiếu khi đăng)."},
+{id:"2023C-4",exam:"2023C",examLabel:"Đề 2023 — Chẵn",q:4,title:"Thỏa thuận chọn TAND cấp cao + thẩm quyền VIAC + Tòa án có thẩm quyền",badge:"ok",
+problem:"Công ty A (kinh doanh vận tải đường biển, trụ sở huyện L, thành phố H) nhận vận chuyển cho Công ty H (thành phố H, tỉnh Q) một lô hàng từ cảng Incheon (Hàn Quốc) về cảng HP; hàng xếp lên tàu ngày 26/3/2023, về cảng ngày 23/4/2023. Hợp đồng thỏa thuận: mọi vi phạm được giải quyết bởi Tòa án nhân dân cấp cao tại Hà Nội. Công ty H phát hiện hàng thiếu hụt 30%, phát sinh tranh chấp. Hỏi: (1) thỏa thuận giải quyết tranh chấp có hợp pháp không? (2) giả định không có thỏa thuận giải quyết tranh chấp, VIAC có thẩm quyền không? (3) Công ty H khởi kiện thì Tòa án nào có thẩm quyền? [Địa danh trong đề viết tắt, không xác định được — lời giải nêu nguyên tắc và giả thiết.]",
+basis:"BLTTDS 92/2015: Điều 30.1 (tranh chấp KDTM thuộc thẩm quyền Tòa án); Điều 35.3 (vụ việc có đương sự/tài sản ở nước ngoài hoặc cần ủy thác tư pháp không thuộc TAND cấp huyện); Điều 37.1 (TAND cấp tỉnh sơ thẩm các vụ việc đó); Điều 38 (TAND cấp cao chỉ phúc thẩm, giám đốc thẩm, tái thẩm — không xét xử sơ thẩm); Điều 39.1(a) (Tòa nơi bị đơn có trụ sở), 39.1(b) (thỏa thuận chọn Tòa nơi nguyên đơn); Điều 40.1(g) (nguyên đơn chọn Tòa nơi hợp đồng được thực hiện). Luật Trọng tài thương mại 54/2010: Điều 5.1 (chỉ giải quyết khi có thỏa thuận trọng tài), Điều 16 (thỏa thuận bằng văn bản).",
+apply:"Ý 1: Không hợp pháp. TAND cấp cao không có thẩm quyền xét xử sơ thẩm (Điều 38); Điều 39.1(b) chỉ cho thỏa thuận chọn Tòa án về lãnh thổ trong số các Tòa có thẩm quyền sơ thẩm, không gồm chọn cấp xét xử. Thỏa thuận vô hiệu ở phần chọn TAND cấp cao. Ý 2: Không. Thỏa thuận chọn Tòa án không phải thỏa thuận trọng tài; giả định không có điều khoản giải quyết tranh chấp thì càng không có thỏa thuận trọng tài — VIAC không có thẩm quyền (Điều 5.1 LTTTM). Các bên vẫn có thể thỏa thuận trọng tài sau khi tranh chấp phát sinh, bằng văn bản (Điều 16). Ý 3: tranh chấp KDTM (Điều 30.1); có yếu tố nước ngoài (vận chuyển từ Incheon) nên thuộc sơ thẩm TAND cấp tỉnh (Điều 37.1, trừ Điều 35.3 với cấp huyện); theo lãnh thổ: TAND cấp tỉnh nơi Công ty A đặt trụ sở (Điều 39.1(a)) hoặc, theo lựa chọn của nguyên đơn, TAND cấp tỉnh nơi hợp đồng được thực hiện — cảng HP (Điều 40.1(g)).",
+conclude:"Thỏa thuận chọn TAND cấp cao tại Hà Nội không hợp pháp. VIAC không có thẩm quyền vì không có thỏa thuận trọng tài. Công ty H kiện tại TAND cấp tỉnh nơi bị đơn có trụ sở hoặc nơi hợp đồng được thực hiện. ĐÁP ÁN THEO LUẬT 2026 LÀ ĐÁP ÁN CHÍNH — xem mục Luật 2026.",
+rubric:[["Ý 1: không hợp pháp — TAND cấp cao không có thẩm quyền sơ thẩm (Điều 38) và vượt phạm vi Điều 39.1(b)",0.75],["Ý 2: VIAC không có thẩm quyền vì không có thỏa thuận trọng tài (Điều 5.1 LTTTM)",0.5],["Ý 3: đúng cấp (TAND cấp tỉnh do yếu tố nước ngoài — Điều 35.3, 37.1) và lãnh thổ (Điều 39.1(a) hoặc 40.1(g))",0.75]],
+mistakes:"Cho rằng các bên tự do chọn bất kỳ Tòa án nào; cho rằng VIAC có thẩm quyền vì tranh chấp 'quốc tế'; xác định thẩm quyền cấp huyện; nhầm TAND cấp cao có thẩm quyền sơ thẩm.",
+limit:"Đã kiểm định theo BLTTDS 2015 và Luật Trọng tài thương mại 2010 tại thời điểm ra đề. Địa danh viết tắt trong đề không xác định được nên thẩm quyền nêu theo nguyên tắc kèm giả thiết.",
+law2026:"ĐÁP ÁN THAY ĐỔI về tổ chức Tòa án (đáp án chính theo luật 2026): từ 01/07/2025 TAND cấp cao ĐÃ BÃI BỎ — điều khoản 'TAND cấp cao tại Hà Nội' vô hiệu thêm một lý do: cơ quan này không còn tồn tại; TAND cấp huyện → TAND khu vực. Nội dung kết luận không đổi: thỏa thuận vô hiệu; VIAC không có thẩm quyền; kiện tại TAND cấp tỉnh nơi bị đơn có trụ sở hoặc nơi hợp đồng được thực hiện."},
+{id:"2023C-5",exam:"2023C",examLabel:"Đề 2023 — Chẵn",q:5,title:"Ký tiếp HĐLĐ xác định thời hạn + lương thử việc + trợ cấp",badge:"ok",
+problem:"Ông A3 (công nhân may) ký HĐLĐ thứ 1: 01/01/2021–31/12/2021, lương 5,0 triệu/tháng; trước đó có hợp đồng thử việc 30 ngày, lương 4,5 triệu/tháng. HĐLĐ thứ 2: 01/01/2022–31/12/2022, lương 6,0 triệu. HĐLĐ thứ 3: 01/01/2023–31/12/2023 [bản đề lỗi ngày — hiểu theo trình tự thời gian], lương 8,0 triệu; ngày 01/02/2023 hai bên thỏa thuận nâng lương lên 10 triệu. Ngày 01/10/2023, do thay đổi cơ cấu công nghệ, thu hẹp sản xuất, hai bên thỏa thuận chấm dứt HĐLĐ. Ông A3 chưa được đóng bảo hiểm thất nghiệp. Hỏi: (1) việc ký các HĐLĐ có phù hợp pháp luật không; lương thử việc có hợp pháp không? (2) ông A3 được hưởng trợ cấp thôi việc hay trợ cấp mất việc làm, số tiền bao nhiêu?",
+basis:"BLLĐ 2019: Điều 20.1(b), 20.2(c) (HĐLĐ xác định thời hạn không quá 36 tháng; chỉ ký thêm 01 lần, sau đó phải ký không xác định thời hạn); Điều 22.2, Điều 33 (sửa đổi HĐLĐ); Điều 25.3 (thử việc tối đa 30 ngày — công nhân kỹ thuật), Điều 26 (lương thử việc ≥85%); Điều 34.3 (hai bên thỏa thuận chấm dứt), 34.11 (cho thôi việc theo Điều 42, 43); Điều 42; Điều 46 (trợ cấp thôi việc: mỗi năm 1/2 tháng lương; lương bình quân 06 tháng liền kề); Điều 47 (trợ cấp mất việc làm: mỗi năm 01 tháng lương, tối thiểu 02 tháng). Điều 8 NĐ 145/2020 (thời gian tính trợ cấp; tháng lẻ từ đủ 06 tháng tính bằng 01 năm).",
+apply:"Ý 1: HĐLĐ thứ 1 và thứ 2 hợp pháp (Điều 20.1(b), 20.2(c)). HĐLĐ thứ 3 vẫn xác định thời hạn là TRÁI Điều 20.2(c) — phải là HĐLĐ không xác định thời hạn (ông A3 là công nhân may, không thuộc ngoại lệ). Thỏa thuận nâng lương ngày 01/02/2023 hợp pháp (Điều 33; phụ lục không sửa thời hạn — Điều 22.2). Thử việc 30 ngày phù hợp nếu công nhân may thuộc nhóm công nhân kỹ thuật (Điều 25.3 — xem Giới hạn dữ liệu); lương thử việc 4,5/5,0 = 90% ≥ 85% — hợp pháp (Điều 26). Ý 2: hình thức chấm dứt là THỎA THUẬN (Điều 34.3) nên hưởng trợ cấp THÔI VIỆC (Điều 46), không phải trợ cấp mất việc làm (Điều 47 chỉ áp dụng khi người sử dụng lao động cho thôi việc theo Điều 42/Điều 34.11). Thời gian làm việc 01/01/2021–01/10/2023 = 2 năm 9 tháng; chưa đóng BHTN nên không trừ; tháng lẻ 9 tháng tính bằng 01 năm → 3 năm. Lương bình quân 06 tháng liền kề (4–9/2023) đều 10 triệu. Số tiền: 3 × 1/2 × 10 triệu = 15 triệu đồng.",
+conclude:"HĐLĐ thứ 3 phải là không xác định thời hạn. Lương thử việc hợp pháp. Ông A3 hưởng trợ cấp thôi việc 15 triệu đồng (đáp án chính). Cách đọc thay thế được ghi ở Giới hạn dữ liệu để người chấm đối chiếu.",
+rubric:[["Ý 1: HĐ1, HĐ2 hợp pháp; HĐ3 phải là không xác định thời hạn (Điều 20.2(c))",0.75],["Ý 1: lương thử việc 90% ≥ 85% hợp pháp (Điều 26); thử việc 30 ngày (Điều 25.3)",0.25],["Ý 2: xác định đúng trợ cấp thôi việc (Điều 46, vì chấm dứt bằng thỏa thuận Điều 34.3)",0.5],["Ý 2: tính đúng thời gian 3 năm và lương bình quân 10 triệu",0.25],["Ý 2: tính đúng số tiền 15 triệu đồng",0.25]],
+mistakes:"Cho rằng ký HĐLĐ xác định thời hạn không giới hạn số lần; cho rằng lương thử việc 4,5 triệu trái luật vì thấp hơn lương chính thức; nhầm hai loại trợ cấp; tính 2 năm 9 tháng thành 2,5 năm; lấy lương bình quân gồm tháng 8 triệu; trừ thời gian BHTN dù chưa đóng.",
+limit:"Đã kiểm định, với hai điểm ghi rõ để chấm: (1) xếp công nhân may vào 'công nhân kỹ thuật' (Điều 25.3, tối đa 30 ngày) hay 'công việc khác' (Điều 25.4, tối đa 06 ngày làm việc) chưa có căn cứ chắc chắn trong đề — đáp án dùng cách hiểu phổ biến (công nhân kỹ thuật). (2) CÁCH ĐỌC THAY THẾ: nếu coi bản chất là cho thôi việc do thay đổi cơ cấu công nghệ (Điều 42) thì trợ cấp mất việc làm = 3 × 1 × 10 triệu = 30 triệu đồng. Đáp án chính là trợ cấp thôi việc 15 triệu theo hình thức pháp lý; cách đọc 30 triệu ghi rõ để chấm, không giấu.",
+law2026:"Không đổi."},
+{id:"2023L-1",exam:"2023L",examLabel:"Đề 2023 — Lẻ",q:1,title:"Nhà đầu tư Nhật Bản: trang trại dâu tây 200 ha tại Mộc Châu",badge:"ok",
+problem:"Nhà đầu tư Nhật Bản xin thành lập tổ chức kinh tế 100% vốn nước ngoài để xây dựng trang trại trồng cây dâu tây trên 200 ha tại huyện Mộc Châu, tỉnh Sơn La. Hỏi: (1) dự án có phải xin chấp thuận chủ trương đầu tư không, thẩm quyền của cơ quan nào; có phải cấp GCN đăng ký đầu tư không; nộp hồ sơ tại đâu? (2) phân tích ưu đãi đầu tư cho dự án.",
+basis:"Luật Đầu tư 2020: Điều 30, 31 (không gồm dự án trồng trọt này); Điều 32.1(a) (UBND tỉnh); Điều 36, 38, 39 (thủ tục và cơ quan đăng ký đầu tư — Sở KH&ĐT); Điều 37.1(a) (dự án của nhà đầu tư nước ngoài phải cấp GCN đăng ký đầu tư); Điều 15.1–15.2, 15.7; Điều 16.1(a), 16.1(e) (trồng, chế biến nông sản), 16.2 (địa bàn ưu đãi). Phụ lục II, III NĐ 31/2021.",
+apply:"Ý 1: Có phải chấp thuận chủ trương theo Điều 32.1(a) (giả thiết đất giao/cho thuê không qua đấu giá, đấu thầu/nhận chuyển nhượng). Diện tích 200 ha không đổi thẩm quyền (ngưỡng đất lúa tại Điều 30 là 500 ha). Thẩm quyền: UBND tỉnh Sơn La. Có phải cấp GCN đăng ký đầu tư (Điều 37.1(a)), trước khi thành lập tổ chức kinh tế. Nộp hồ sơ tại Sở KH&ĐT tỉnh Sơn La (Điều 36, 38, 39). Ý 2: ngành nghề ưu đãi — Điều 16.1(e) (trồng nông sản); nếu áp dụng công nghệ cao thì thêm Điều 16.1(a). Địa bàn — Điều 16.2 (Mộc Châu thuộc Phụ lục III hay không chưa xác minh — xem Giới hạn dữ liệu). Hình thức ưu đãi tại Điều 15.1; hưởng mức cao nhất (Điều 15.7).",
+conclude:"Phải xin chấp thuận chủ trương của UBND tỉnh Sơn La; phải cấp GCN đăng ký đầu tư; nộp hồ sơ tại Sở KH&ĐT tỉnh Sơn La. Dự án thuộc diện ưu đãi về ngành nghề (Điều 16.1(e)), có thể thêm về địa bàn (Điều 16.2).",
+rubric:[["Ý 1: phải xin chấp thuận + thẩm quyền UBND tỉnh Sơn La (Điều 32.1(a))",0.5],["Ý 1: phải cấp GCN đăng ký đầu tư (Điều 37.1(a)) + nộp tại Sở KH&ĐT Sơn La (Điều 36, 39)",0.5],["Ý 2: ngành nghề ưu đãi (Điều 16.1(e), (a))",0.5],["Ý 2: địa bàn ưu đãi (Điều 16.2) + hình thức ưu đãi (Điều 15.1)",0.5]],
+mistakes:"Cho rằng dự án trồng trọt 200 ha không phải chấp thuận; nhầm thẩm quyền Thủ tướng/Bộ KH&ĐT; cho rằng nhà đầu tư nước ngoài không cần GCN; không tách căn cứ ngành nghề và địa bàn.",
+limit:"Đã kiểm định, với hai ghi chú như Câu 1 đề 2023 chẵn: giả thiết về phương thức sử dụng đất; Mộc Châu thuộc Phụ lục III NĐ 31/2021 hay không CHƯA XÁC MINH — kết luận ưu đãi chỉ dựa trên căn cứ ngành nghề (Điều 16.1).",
+law2026:"Không đổi về nội dung (Luật Đầu tư 2025 sửa Điều 30–32 nhưng thẩm quyền UBND tỉnh không đổi). Cơ quan đăng ký đầu tư nay là Sở Tài chính theo tổ chức bộ máy mới."},
+{id:"2023L-2",exam:"2023L",examLabel:"Đề 2023 — Lẻ",q:2,title:"Sáp nhập công ty A vào công ty B: thủ tục, vốn, ngành nghề",badge:"ok",
+problem:"CTCP Tươi Sáng (công ty A): vốn điều lệ 2 tỷ, tổng tài sản 3 tỷ, kinh doanh gạch không nung. CTCP Bàn Thạch (công ty B): vốn điều lệ 1 tỷ, tổng tài sản 2 tỷ, kinh doanh xây dựng nhà các loại. Cả hai đăng ký tại Sở KH&ĐT tỉnh H. Biết việc sáp nhập không phải tập trung kinh tế bị cấm theo Luật Cạnh tranh. Hỏi: (1) A sáp nhập vào B phải tuân thủ quy định nào của LDN 2020? (2) sau sáp nhập, vốn điều lệ và tổng tài sản của B là bao nhiêu? (3) B có được kinh doanh gạch không nung không?",
+basis:"LDN 2020: Điều 201 (sáp nhập: khoản 1 — chuyển toàn bộ tài sản, quyền, nghĩa vụ sang công ty nhận sáp nhập, công ty bị sáp nhập chấm dứt tồn tại; khoản 2 — nội dung hợp đồng sáp nhập; khoản 3 — thông qua hợp đồng và thông báo chủ nợ, người lao động trong 15 ngày; khoản 4 — kế thừa toàn bộ quyền, nghĩa vụ; khoản 6 — cấm nếu là tập trung kinh tế bị cấm); Điều 148.3(g) (nghị quyết tổ chức lại từ 65%); Điều 7.1 (tự do kinh doanh ngành nghề luật không cấm); Điều 31.1 (thông báo thay đổi nội dung đăng ký trong 10 ngày).",
+apply:"Ý 1: tuân thủ Điều 201 — hợp đồng sáp nhập đủ nội dung Điều 201.2; ĐHĐCĐ hai công ty thông qua hợp đồng và Điều lệ B sau sáp nhập (≥65% — Điều 148.3(g)); B thông báo bằng văn bản cho chủ nợ và người lao động trong 15 ngày (Điều 201.3); đăng ký doanh nghiệp — A chấm dứt tồn tại khi B được cấp GCN mới, B kế thừa toàn bộ quyền, nghĩa vụ (Điều 201.4). Đề đã cho không phải tập trung kinh tế bị cấm nên Điều 201.6 không cản trở. Ý 2: vốn điều lệ B sau sáp nhập = 2 + 1 = 3 tỷ đồng; tổng tài sản = 3 + 2 = 5 tỷ đồng (giả thiết không điều chỉnh giá trị tài sản và đề không cho tổng nợ). Tỷ lệ sở hữu cụ thể phụ thuộc phương án chuyển đổi cổ phần trong hợp đồng sáp nhập. Ý 3: Được — B kế thừa quyền kinh doanh gạch không nung của A (Điều 201.4); ngành này không bị cấm (Điều 7.1); B chỉ cần thông báo bổ sung ngành nghề trong 10 ngày (Điều 31.1).",
+conclude:"Sáp nhập theo Điều 201. Sau sáp nhập B có vốn điều lệ 3 tỷ, tổng tài sản 5 tỷ. B được kinh doanh gạch không nung sau khi thông báo bổ sung ngành nghề.",
+rubric:[["Ý 1: hợp đồng sáp nhập (Điều 201.2) + ĐHĐCĐ thông qua (Điều 148.3(g)) + thông báo 15 ngày (Điều 201.3) + đăng ký và hệ quả (Điều 201.4)",0.75],["Ý 2: vốn điều lệ 3 tỷ + tổng tài sản 5 tỷ",0.5],["Ý 3: được kinh doanh (Điều 201.4, 7.1) + thông báo bổ sung ngành nghề (Điều 31.1)",0.75]],
+mistakes:"Nhầm sáp nhập (Điều 201) với hợp nhất (Điều 200); cho rằng B phải xin giấy phép mới cho ngành gạch; tính vốn sau sáp nhập chỉ bằng vốn của B; quên thông báo 15 ngày và tỷ lệ 65%.",
+limit:"Đã kiểm định (2 + 1 = 3 tỷ; 3 + 2 = 5 tỷ đã tính lại).",
+law2026:"Không đổi về nội dung. Thủ tục thông báo thay đổi ngành nghề nay theo NĐ 168/2025/NĐ-CP thay NĐ 01/2021/NĐ-CP."},
+{id:"2023L-3",exam:"2023L",examLabel:"Đề 2023 — Lẻ",q:3,title:"Điều kiện thụ lý đơn phá sản + biện pháp phục hồi + điều kiện thông qua phương án",badge:"ok",
+problem:"Công ty TNHH Giang Ngọc có khoản nợ 22 tỷ đã quá hạn từ 31/12/2018, không có tài sản bảo đảm. Công ty TNHH MTV Bổ Ích (chủ nợ) nộp đơn yêu cầu mở thủ tục phá sản ngày 08/6/2019 tới TAND thành phố H, kèm tài liệu chứng minh khoản nợ; Tòa án đã thông báo cho Bổ Ích nộp lệ phí phá sản và tạm ứng chi phí phá sản. Hỏi: (1) Tòa án có thụ lý đơn không, tại sao? (2) các biện pháp phục hồi hoạt động kinh doanh có thể áp dụng là gì? (3) điều kiện để Hội nghị chủ nợ thông qua phương án phục hồi là gì?",
+basis:"Luật Phá sản 51/2014 (luật tại thời điểm ra đề): Điều 4.1 (ngưỡng 03 tháng); Điều 5.1 (quyền của chủ nợ không có bảo đảm); Điều 26 (nội dung đơn); Điều 28, 31, 32 (xem xét đơn, trả lại đơn, thụ lý sau khi nộp lệ phí và tạm ứng chi phí); Điều 87 (xây dựng phương án trong 30 ngày); Điều 88 (các biện pháp phục hồi); Điều 80 (Hội nghị hợp lệ: chủ nợ đại diện ít nhất 51% tổng số nợ không có bảo đảm); Điều 81.2, 91 (nghị quyết thông qua khi quá nửa số chủ nợ không có bảo đảm có mặt và đại diện từ 65% tổng số nợ không có bảo đảm tán thành); Điều 92 (Tòa án công nhận).",
+apply:"Ý 1: Có — nợ quá hạn từ 31/12/2018 đến 08/6/2019 là hơn 05 tháng, vượt ngưỡng Điều 4.1; Bổ Ích là chủ nợ không có bảo đảm có quyền nộp đơn (Điều 5.1); đơn kèm chứng cứ (Điều 26); sau khi Bổ Ích nộp lệ phí và tạm ứng chi phí theo thông báo (Điều 28) thì Tòa án thụ lý (Điều 32) — không nộp thì bị trả lại đơn (Điều 31). Thẩm quyền cấp Tòa án của TAND thành phố H chưa kết luận được từ đề (xem Giới hạn dữ liệu). Ý 2: các biện pháp tại Điều 88 — huy động vốn mới; bán, cho thuê, cho thuê mua một số tài sản; bán doanh nghiệp; thay đổi mặt hàng sản xuất, kinh doanh; đổi mới công nghệ; tổ chức lại bộ máy quản lý, sáp nhập, chia, tách bộ phận sản xuất; bán cổ phần cho chủ nợ và người khác (chỉ áp cho CTCP, không áp trực tiếp cho TNHH); bán, giảm một số tài sản để thực hiện dự án đầu tư đã có hiệu quả; biện pháp khác không trái pháp luật. Ý 3: Hội nghị hợp lệ theo Điều 80 và nghị quyết được quá nửa số chủ nợ không có bảo đảm có mặt, đại diện từ 65% tổng số nợ không có bảo đảm trở lên tán thành (Điều 81.2, 91); phương án còn phải được Tòa án công nhận (Điều 92). Tỷ lệ 65% khác 2/3 của Luật Phá sản 2004.",
+conclude:"Tòa án thụ lý sau khi Bổ Ích nộp lệ phí và tạm ứng chi phí. Biện pháp phục hồi theo Điều 88. Phương án được thông qua khi quá nửa số chủ nợ có mặt và đại diện ≥65% tổng số nợ không có bảo đảm tán thành.",
+rubric:[["Ý 1: mất khả năng thanh toán (Điều 4.1) + quyền nộp đơn (Điều 5.1) + thụ lý sau khi nộp phí (Điều 28, 32)",0.75],["Ý 2: nêu được các biện pháp phục hồi tại Điều 88",0.5],["Ý 3: điều kiện thông qua (quá nửa số chủ nợ có mặt + ≥65% tổng số nợ — Điều 81.2, 91) + Hội nghị hợp lệ ≥51% (Điều 80)",0.75]],
+mistakes:"Tính sai thời gian quá hạn (hơn 05 tháng, không phải đúng 03 tháng); cho rằng Tòa thụ lý ngay khi nhận đơn; nhầm tỷ lệ 2/3 của Luật 2004; áp biện pháp 'bán cổ phần' cho công ty TNHH.",
+limit:"Đã kiểm định theo Luật Phá sản 2014, với ghi chú: thẩm quyền cấp Tòa án của TAND thành phố H chưa xác minh được từ đề (không biết Giang Ngọc có yếu tố nước ngoài hay không — Điều 8.1/8.2 luật 2014); tỷ lệ thông qua phương án phục hồi theo Luật 142/2025 cần kiểm lại khi đăng.",
+law2026:"Chỉ mang tính học thuật: tại ngày 08/6/2019 khoản nợ quá hạn hơn 05 tháng — dưới ngưỡng 06 tháng của Điều 5.2 Luật 142/2025 — nhưng đến nay đã quá hạn hơn 7 năm nên kết luận chấp nhận đơn KHÔNG đổi. Thủ tục phục hồi nay là thủ tục độc lập theo Điều 24 Luật 142/2025."},
+{id:"2023L-4",exam:"2023L",examLabel:"Đề 2023 — Lẻ",q:4,title:"Chuyển nhượng cổ phần của cổ đông sáng lập + thỏa thuận trọng tài + thẩm quyền Tòa án",badge:"ok",
+problem:"Ông A là cổ đông sáng lập của CTCP B, nắm giữ 40% vốn điều lệ. Tháng 3/2023, ông A ký hợp đồng chuyển nhượng 3 tỷ đồng cổ phần cho ông K; hợp đồng thỏa thuận: 'Mọi tranh chấp phát sinh từ hợp đồng này sẽ do Trung tâm trọng tài TL giải quyết'. Ông A đã chuyển nhượng nhưng công ty B chưa làm thủ tục đăng ký cổ đông cho ông K. Hỏi: (1) hợp đồng chuyển nhượng có hiệu lực không? (2) ông K đã trở thành cổ đông chưa? (3) nếu ông K khởi kiện công ty B yêu cầu đăng ký cổ đông thì Tòa án nào có thẩm quyền?",
+basis:"LDN 2020: Điều 120.3 (hạn chế chuyển nhượng của cổ đông sáng lập trong 03 năm đầu — chỉ chuyển nhượng cho cổ đông sáng lập khác, trừ ĐHĐCĐ chấp thuận); Điều 127.1 (cổ phần tự do chuyển nhượng), 127.2 (chuyển nhượng bằng hợp đồng văn bản), 127.6 (người nhận chuyển nhượng chỉ trở thành cổ đông khi thông tin được ghi vào sổ đăng ký cổ đông), 127.7 (công ty cập nhật sổ đăng ký cổ đông trong 24 giờ kể từ khi nhận đề nghị). Điều 117 BLDS (điều kiện hiệu lực giao dịch). Luật Trọng tài thương mại 2010: Điều 5.1, 16. BLTTDS: Điều 30.1, 35.1 (TAND cấp huyện với vụ việc không có yếu tố nước ngoài), 39.1(a) (Tòa nơi bị đơn có trụ sở).",
+apply:"Ý 1: Có hiệu lực — hợp đồng bằng văn bản (Điều 127.2), các bên tự nguyện, nội dung không vi phạm điều cấm (Điều 117 BLDS). Điều kiện có điều kiện: ông A là cổ đông sáng lập nên nếu công ty B được cấp GCN chưa đủ 03 năm thì chỉ được chuyển nhượng cho cổ đông sáng lập khác, trừ ĐHĐCĐ chấp thuận (Điều 120.3) — đề không cho ngày cấp GCN nên phân tích có điều kiện (xem Giới hạn dữ liệu). Ý 2: Chưa. Ông K chỉ trở thành cổ đông khi thông tin được ghi vào sổ đăng ký cổ đông (Điều 127.6); công ty B phải cập nhật trong 24 giờ kể từ khi nhận được đề nghị (Điều 127.7). Ý 3: thỏa thuận trọng tài chỉ ràng buộc ông A và ông K — công ty B không phải bên của thỏa thuận nên ông K kiện công ty B tại Tòa án được: TAND cấp huyện nơi công ty B đặt trụ sở chính (Điều 30.1, 35.1, 39.1(a) BLTTDS, theo luật tại thời điểm ra đề).",
+conclude:"Hợp đồng có hiệu lực (với phân tích có điều kiện về Điều 120.3). Ông K chưa là cổ đông vì chưa ghi vào sổ đăng ký cổ đông. Kiện công ty B tại Tòa án nơi công ty B đặt trụ sở — theo luật 2026 là TAND khu vực (xem mục Luật 2026).",
+rubric:[["Ý 1: hợp đồng có hiệu lực (Điều 127.1–127.2, Điều 117 BLDS) + phân tích Điều 120.3",0.75],["Ý 2: ông K chưa trở thành cổ đông (Điều 127.6) + đăng ký trong 24 giờ (Điều 127.7)",0.5],["Ý 3: Tòa án nơi công ty B đặt trụ sở (Điều 30.1, 35.1, 39.1(a)) + thỏa thuận trọng tài không ràng buộc công ty B",0.75]],
+mistakes:"Cho rằng ký hợp đồng là đủ thành cổ đông; cho rằng thỏa thuận trọng tài ràng buộc cả công ty B; xác định sai cấp Tòa án; bỏ qua Điều 120.3; cho rằng hợp đồng vô hiệu vì công ty chưa đăng ký cổ đông.",
+limit:"Đã kiểm định, với ghi chú: Điều 120.3 được phân tích có điều kiện vì đề không cho ngày cấp GCN của công ty B; kết luận chính không phụ thuộc điểm này.",
+law2026:"ĐÁP ÁN THAY ĐỔI về tên gọi Tòa án (đáp án chính theo luật 2026): TAND cấp huyện → TAND khu vực — ông K kiện tại TAND khu vực nơi công ty B đặt trụ sở chính. Nội dung còn lại không đổi."},
+{id:"2023L-5",exam:"2023L",examLabel:"Đề 2023 — Lẻ",q:5,title:"Thời giờ làm việc, lương làm thêm giờ và thời hiệu khởi kiện",badge:"warn",
+problem:"Ông Y là nhân viên bảo vệ tại Ngân hàng K, làm việc 12 giờ/ngày, 7 ngày/tuần, đã làm việc 10 tháng. Ngân hàng trả lương làm thêm giờ tính theo mức lương tối thiểu vùng 4.680.000 đồng/tháng và phụ cấp làm việc ban đêm bằng 30% tiền lương làm thêm giờ vào ngày làm việc bình thường. Ông Y khởi kiện yêu cầu trả 500.000.000 đồng tiền lương làm thêm giờ và tiền lương làm việc ban đêm còn thiếu. Hỏi: (1) làm việc 12 giờ/ngày, 7 ngày/tuần có phù hợp pháp luật không? (2) cách trả lương làm thêm và phụ cấp ban đêm có đúng không? (3) khởi kiện có còn thời hiệu không?",
+basis:"BLLĐ 2019: Điều 105.1 (không quá 08 giờ/ngày, 48 giờ/tuần); Điều 107.2 (làm thêm: đồng ý của người lao động; không quá 50% số giờ bình thường/ngày, tổng không quá 12 giờ/ngày; không quá 40 giờ/tháng; không quá 200 giờ/năm — 300 giờ/năm chỉ với trường hợp Điều 107.3, bảo vệ ngân hàng không thuộc); Điều 111.1 (nghỉ ít nhất 24 giờ liên tục mỗi tuần); Điều 98.1 (lương làm thêm tính theo tiền lương thực trả: 150%/200%/300%), 98.2 (làm đêm trả thêm ít nhất 30% tiền lương ngày làm việc bình thường), 98.3 (làm thêm giờ vào ban đêm thêm 20%); Điều 190.3 (thời hiệu yêu cầu Tòa án: 01 năm kể từ ngày phát hiện hành vi vi phạm); Điều 190.1–190.2 (hòa giải viên 06 tháng, Hội đồng trọng tài lao động 09 tháng). Điều 55 NĐ 145/2020 (cách tính lương làm thêm giờ theo tiền lương thực trả).",
+apply:"Ý 1: Không phù hợp. Ông Y làm 84 giờ/tuần, làm thêm 36 giờ/tuần — dù đúng giới hạn 50%/ngày và 12 giờ/ngày, nhưng vượt xa 40 giờ/tháng (khoảng 156 giờ/tháng) và 200 giờ/năm (khoảng 1.560 giờ trong 10 tháng) tại Điều 107.2; làm 7 ngày/tuần vi phạm nghỉ hằng tuần (Điều 111.1). Ý 2: Không đúng. Lương làm thêm phải tính theo tiền lương THỰC TRẢ của công việc đang làm (Điều 98.1; Điều 55 NĐ 145/2020), không phải lương tối thiểu vùng. Phụ cấp ban đêm là 30% tiền lương của ngày làm việc bình thường (Điều 98.2), không phải 30% tiền lương làm thêm giờ; làm thêm giờ vào ban đêm còn thêm 20% (Điều 98.3) — đề không cho dữ kiện để tính khoản này. Ý 3: Còn thời hiệu — 01 năm kể từ ngày phát hiện hành vi vi phạm (Điều 190.3); ông Y mới làm việc 10 tháng nên hành vi trả thiếu nằm trong vòng 01 năm. Thời hiệu hòa giải viên là 06 tháng và Hội đồng trọng tài lao động là 09 tháng (Điều 190.1–190.2).",
+conclude:"Thời giờ làm việc không phù hợp pháp luật; cách tính lương làm thêm và phụ cấp ban đêm đều sai căn cứ; khởi kiện còn trong thời hiệu 01 năm theo Điều 190.3. Số tiền 500 triệu đồng không kiểm chứng được — xem Giới hạn dữ liệu.",
+rubric:[["Ý 1: thời giờ bình thường (Điều 105.1) + tính giờ làm thêm và kết luận vượt 40 giờ/tháng, 200 giờ/năm (Điều 107.2) + vi phạm nghỉ hằng tuần (Điều 111.1)",0.75],["Ý 2: lương làm thêm theo tiền lương thực trả, không phải lương tối thiểu vùng (Điều 98.1, Điều 55 NĐ 145/2020)",0.5],["Ý 2: phụ cấp ban đêm 30% tiền lương ngày làm việc bình thường (Điều 98.2)",0.25],["Ý 3: thời hiệu 01 năm kể từ ngày phát hiện hành vi vi phạm (Điều 190.3); làm việc 10 tháng nên còn thời hiệu",0.5]],
+mistakes:"Cho rằng làm thêm đúng 50%/ngày là đủ hợp pháp (quên giới hạn tháng/năm); lấy lương tối thiểu vùng làm căn cứ tính lương làm thêm; nhầm phụ cấp ban đêm với khoản thêm 20% khi làm thêm giờ ban đêm; tính thời hiệu từ ngày bắt đầu làm việc.",
+limit:"CHƯA ĐẠT ở riêng số tiền: khoản làm thêm 500 triệu đồng không kiểm chứng được — thiếu lương thực tế của ông Y, bảng chấm công, phân loại số giờ theo loại ngày/giờ đêm. Nguyên tắc pháp lý đã kiểm chứng, gồm thời hiệu Điều 190.3 BLLĐ 2019 (01 năm từ ngày phát hiện vi phạm; 06 tháng với hòa giải viên, 09 tháng với Hội đồng trọng tài lao động). Ước tính giờ làm thêm là giả thiết làm việc đều đặn. Mức lương tối thiểu vùng 4.680.000 đồng trong đề là mức tại thời điểm ra đề (2023).",
+law2026:"Không đổi về nguyên tắc pháp lý."}
+);
+</script>
+<script>
+/* ============ LƯU TIẾN ĐỘ (localStorage: phap-luat-progress-v1) ============ */
+var PKEY="phap-luat-progress-v1";
+var progress={done:{},answers:{},mock:{},diag:{},lastPart:0,lastQ:""};
+try{var _p=localStorage.getItem(PKEY); if(_p){progress=Object.assign(progress,JSON.parse(_p));}}catch(e){}
+var saveTimer=null, syncTimer=null, syncing=false;
+function saveProgress(){ try{localStorage.setItem(PKEY,JSON.stringify(progress));}catch(e){} updateProgressUI(); scheduleSync(); }
+function updateProgressUI(){
+  var total=30+SOLUTIONS.length, done=0;
+  for(var k in progress.done){ if(progress.done[k]) done++; }
+  var pct=Math.round(done/total*100);
+  document.getElementById("progBar").style.width=pct+"%";
+  document.getElementById("progText").textContent="Đã hoàn thành "+done+"/"+total+" mục (ngày trong lộ trình + câu giải đề đã mở lời giải) — "+pct+"%. Tiến độ chỉ lưu trên trình duyệt này, trừ khi bạn đăng nhập để đồng bộ.";
+  var ct=document.getElementById("continueText");
+  if(progress.lastQ){ var s=findSol(progress.lastQ); if(s) ct.textContent="Lần gần nhất: "+s.examLabel+" — Câu "+s.q+": "+s.title; }
+  else if(progress.lastPart){ ct.textContent="Lần gần nhất: Phần "+(progress.lastPart)+" — "+PARTS[progress.lastPart-1].t; }
+}
+function findSol(id){ for(var i=0;i<SOLUTIONS.length;i++) if(SOLUTIONS[i].id===id) return SOLUTIONS[i]; return null; }
+document.getElementById("btnClearProgress").addEventListener("click",function(){
+  progress={done:{},answers:{},mock:{},diag:{},lastPart:0,lastQ:""};
+  try{localStorage.removeItem(PKEY);}catch(e){}
+  document.querySelectorAll("textarea[data-q]").forEach(function(t){t.value="";});
+  document.querySelectorAll("input[data-day]").forEach(function(c){c.checked=false;});
+  saveProgress(); alert2("Đã xóa toàn bộ tiến độ trên trình duyệt này.");
+});
+function alert2(msg){ var d=document.createElement("div"); d.className="note"; d.textContent=msg; document.querySelector(".wrap").prepend(d); setTimeout(function(){d.remove();},4000); }
+
+/* ============ ĐẾM NGƯỢC TỚI GIỜ THI ============ */
+var EXAM_TS=new Date("2026-12-13T14:00:00+07:00").getTime();
+function tick(){
+  var diff=EXAM_TS-Date.now();
+  if(diff<0) diff=0;
+  var d=Math.floor(diff/86400000), h=Math.floor(diff%86400000/3600000), m=Math.floor(diff%3600000/60000), s=Math.floor(diff%60000/1000);
+  document.getElementById("cdD").textContent=d; document.getElementById("cdH").textContent=h;
+  document.getElementById("cdM").textContent=m; document.getElementById("cdS").textContent=s;
+}
+tick(); setInterval(tick,1000);
+
+/* ============ LỘ TRÌNH 30 NGÀY ============ */
+(function(){
+  var plan=[
+   "Phần 1: loại hình doanh nghiệp + quyền/nghĩa vụ (Điều 7, 9, 10)","Phần 1: tài sản góp vốn, định giá (Điều 34–36)","Phần 1: TNHH 2TV — góp vốn 90 ngày (Điều 47)","Phần 1: TNHH 2TV — HĐTV, chia lợi nhuận (Điều 49–56, 69)","Phần 1: CTCP — cổ phần, cổ đông sáng lập (Điều 111–127)","Phần 1: CTCP — ĐHĐCĐ, HĐQT (Điều 138–170)","Phần 1: tổ chức lại, giải thể (Điều 200–208) + ôn Phần 1",
+   "Phần 2: bảo đảm đầu tư + ngành nghề cấm/có điều kiện (Luật 143/2025)","Phần 2: ưu đãi đầu tư — 16 nhóm đối tượng (Điều 14–15)","Phần 2: ưu đãi đặc biệt (Điều 17) + hình thức đầu tư","Phần 2: chấp thuận chủ trương — 20 loại dự án (Điều 24–25)","Phần 2: GCN đăng ký đầu tư + thủ tục đầu tư đặc biệt (Điều 19, 26–28)","Phần 2: triển khai, điều chỉnh, đầu tư ra nước ngoài + ôn Phần 2",
+   "Phần 3: giao kết hợp đồng (Điều 385–400 BLDS)","Phần 3: bảo đảm thực hiện + hiệu lực, vô hiệu (Điều 117, 292–350 BLDS)","Phần 3: trách nhiệm vi phạm hợp đồng KDTM (Điều 294–312 LTM) + ôn Phần 3",
+   "Phần 4: thỏa thuận hạn chế cạnh tranh (Điều 11)","Phần 4: vị trí thống lĩnh/độc quyền + hành vi bị cấm (Điều 26–27)","Phần 4: tập trung kinh tế, cạnh tranh không lành mạnh, tố tụng (Điều 46–92) + ôn Phần 4",
+   "Phần 5: trọng tài thương mại (Điều 2–16 LTTTM)","Phần 5: thẩm quyền Tòa án (Điều 30–40 BLTTDS) + ôn Phần 5",
+   "Phần 6: dấu hiệu mất khả năng thanh toán (Điều 5 Luật 142/2025)","Phần 6: thủ tục phục hồi độc lập (Chương II, Điều 24)","Phần 6: thủ tục phá sản + thứ tự phân chia (Điều 46)","Phần 6: rút gọn, bảo toàn tài sản, cấm đảm nhiệm (Điều 49–50, 68–69, 84) + ôn Phần 6",
+   "Phần 7: HĐLĐ + thử việc (Điều 20–27)","Phần 7: lương, làm thêm giờ, thời giờ làm việc (Điều 98, 105, 107)","Phần 7: chấm dứt HĐLĐ, trợ cấp, kỷ luật, thời hiệu (Điều 34–47, 122, 190) + ôn Phần 7",
+   "Làm đề 2024 lẻ (thi thử 180 phút) + tự chấm theo rubric","Làm đề 2024 chẵn + 2023 chẵn, rà 3 câu 'Chưa đạt' và các điểm luật 2026 thay đổi"
+  ];
+  var start=new Date(2026,10,13);
+  var html='<table><thead><tr><th>Ngày</th><th>Nội dung</th><th>Xong</th></tr></thead><tbody>';
+  for(var i=0;i<30;i++){
+    var dt=new Date(start.getTime()+i*86400000);
+    var key="day-"+(i+1);
+    var label=dt.getDate()+"/"+(dt.getMonth()+1);
+    html+='<tr><td><strong>'+label+'</strong></td><td>'+plan[i]+'</td><td><input type="checkbox" data-day="'+key+'" '+(progress.done[key]?"checked":"")+' aria-label="Đánh dấu xong ngày '+(i+1)+'"></td></tr>';
+  }
+  html+='<tr><td><strong>13/12</strong></td><td><strong>NGÀY THI — 14:00–17:00, thi viết 180 phút.</strong> Mang theo bút, giấy tờ tùy thân; đọc kỹ yêu cầu từng câu trước khi viết.</td><td></td></tr>';
+  html+="</tbody></table>";
+  document.getElementById("roadmap").innerHTML=html;
+  document.querySelectorAll("input[data-day]").forEach(function(c){
+    c.addEventListener("change",function(){ progress.done[c.getAttribute("data-day")]=c.checked; saveProgress(); });
+  });
+})();
+
+/* ============ CHẨN ĐOÁN 12 CÂU ============ */
+(function(){
+  var html="";
+  DIAG.forEach(function(d,i){
+    html+='<div class="card" style="margin:8px 0"><p><strong>Câu '+(i+1)+' · '+d[0]+'.</strong> '+d[1]+"</p>";
+    d[2].forEach(function(o,j){ html+='<label style="display:block;margin:4px 0"><input type="radio" name="diag'+i+'" value="'+j+'"> '+o+"</label>"; });
+    html+="</div>";
+  });
+  document.getElementById("diagnostic").innerHTML=html;
+  document.getElementById("btnDiag").addEventListener("click",function(){
+    var score=0, weak={};
+    DIAG.forEach(function(d,i){
+      var sel=document.querySelector('input[name="diag'+i+'"]:checked');
+      var ok=sel && parseInt(sel.value,10)===d[3];
+      if(ok) score++; else weak[d[0]]=(weak[d[0]]||0)+1;
+    });
+    var worst="—", max=0; for(var k in weak){ if(weak[k]>max){max=weak[k]; worst=k;} }
+    document.getElementById("diagResult").textContent="Đúng "+score+"/12. "+(max>0?("Phần cần ưu tiên ôn trước: "+worst+" (sai "+max+" câu)."):"Rất tốt — giữ nhịp ôn đều cả 7 phần.");
+  });
+})();
+
+/* ============ 7 PHẦN ============ */
+(function(){
+  var html="";
+  PARTS.forEach(function(p,i){
+    html+='<details class="part" id="part-'+p.n+'"><summary>Phần '+["I","II","III","IV","V","VI","VII"][i]+". "+p.t+' <span class="muted small">('+p.pages+')</span></summary>'
+      +'<p class="small muted">Văn bản nền: '+p.law+"</p>"
+      +"<h4>Mục tiêu</h4><p>"+p.goal+"</p><h4>Lý thuyết tóm tắt</h4>";
+    p.theory.forEach(function(t,j){ html+='<p style="border-top:1px dashed var(--line);padding-top:6px">'+t+"</p>"; });
+    html+="<h4>Ví dụ minh họa trong sách</h4><p>"+p.ex+"</p><h4>Lỗi hay gặp</h4><ul>";
+    p.mistakes.forEach(function(m){ html+="<li>"+m+"</li>"; });
+    html+="</ul>";
+    if(p.note) html+='<div class="note"><strong>Lưu ý nguồn:</strong> '+p.note+"</div>";
+    html+='<button class="btn ghost" type="button" data-part="'+p.n+'">Đánh dấu đã học phần này</button></details>';
+  });
+  document.getElementById("parts").innerHTML=html;
+  document.querySelectorAll("button[data-part]").forEach(function(b){
+    b.addEventListener("click",function(){ progress.lastPart=parseInt(b.getAttribute("data-part"),10); progress.done["part-"+progress.lastPart]=true; saveProgress(); b.textContent="Đã đánh dấu ✓"; });
+  });
+})();
+
+/* ============ PHỤ LỤC VĂN BẢN ============ */
+(function(){
+  var html="";
+  LAWS.forEach(function(l,i){ html+="<tr><td>"+(i+1)+"</td><td>"+l[0]+"</td><td>"+l[1]+"</td><td>"+l[2]+"</td><td>"+l[3]+"</td><td>"+l[4]+"</td></tr>"; });
+  document.getElementById("lawTable").innerHTML=html;
+})();
+
+/* ============ NGÂN HÀNG DẠNG BÀI ============ */
+(function(){
+  var html="";
+  BANK.forEach(function(b){ html+='<div class="card" style="margin:8px 0"><h3>'+b[0]+"</h3><p>"+b[1]+"</p></div>"; });
+  document.getElementById("exerciseBank").innerHTML=html;
+})();
+
+/* ============ FLASHCARDS ============ */
+var flashIdx=0, flashFlip=false;
+function renderFlash(){
+  var f=FLASH[flashIdx];
+  document.getElementById("flashCard").textContent=flashFlip?f[2]:f[1];
+  document.getElementById("flashMeta").textContent=f[0]+" · Thẻ "+(flashIdx+1)+"/"+FLASH.length+(flashFlip?" · Mặt đáp án — bấm thẻ để lật lại":" · Bấm vào thẻ để xem đáp án");
+}
+document.getElementById("flashCard").addEventListener("click",function(){ flashFlip=!flashFlip; renderFlash(); });
+document.getElementById("flashNext").addEventListener("click",function(){ flashIdx=(flashIdx+1)%FLASH.length; flashFlip=false; renderFlash(); });
+document.getElementById("flashPrev").addEventListener("click",function(){ flashIdx=(flashIdx-1+FLASH.length)%FLASH.length; flashFlip=false; renderFlash(); });
+renderFlash();
+
+/* ============ QUIZ ============ */
+var quizIdx=0, quizRight=0, quizAnswered=0;
+function renderQuiz(){
+  var box=document.getElementById("quizBox");
+  if(quizIdx>=QUIZ.length){ box.innerHTML="<p>Đã hết "+QUIZ.length+" câu. Bạn đúng "+quizRight+" câu.</p>"; return; }
+  var q=QUIZ[quizIdx];
+  var html="<p><strong>Phần "+q.p+" · Câu "+(quizIdx+1)+"/"+QUIZ.length+".</strong> "+q.q+"</p>";
+  q.o.forEach(function(o,j){ html+='<button class="quizopt" type="button" data-opt="'+j+'">'+o+"</button>"; });
+  html+='<p class="small" id="quizExplain"></p>';
+  box.innerHTML=html;
+  box.querySelectorAll(".quizopt").forEach(function(b){
+    b.addEventListener("click",function(){
+      var j=parseInt(b.getAttribute("data-opt"),10);
+      box.querySelectorAll(".quizopt").forEach(function(x){ x.disabled=true; });
+      b.classList.add(j===q.a?"right":"wrong");
+      box.querySelectorAll(".quizopt")[q.a].classList.add("right");
+      document.getElementById("quizExplain").textContent=(j===q.a?"Đúng. ":"Chưa đúng. ")+q.e;
+      quizAnswered++; if(j===q.a) quizRight++;
+      document.getElementById("quizScore").textContent="Điểm quiz: "+quizRight+"/"+quizAnswered;
+      setTimeout(function(){ quizIdx++; renderQuiz(); },1600);
+    });
+  });
+}
+renderQuiz();
+
+/* ============ GIẢI ĐỀ 20 CÂU ============ */
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+function renderSolutions(filter){
+  var html="";
+  SOLUTIONS.forEach(function(s){
+    if(filter && filter!=="all" && s.exam!==filter) return;
+    var total=0; s.rubric.forEach(function(r){ total+=r[1]; });
+    var badgeHtml=s.badge==="ok"?'<span class="badge ok">Đã kiểm định</span>':'<span class="badge warn">Chưa đạt — chờ đối chiếu</span>';
+    html+='<details class="qcard" id="q-'+s.id+'"><summary>'+s.examLabel+" — Câu "+s.q+": "+s.title+" "+badgeHtml+"</summary>"
+      +'<p class="small"><span class="badge warn">Lời giải tham khảo tự tính — KHÔNG phải đáp án chính thức</span></p>'
+      +"<h4>Đề bài và dữ kiện</h4><p>"+s.problem+"</p>"
+      +'<label class="small" for="ta-'+s.id+'"><strong>Ô tự làm</strong> (tự lưu trên trình duyệt này):</label>'
+      +'<textarea id="ta-'+s.id+'" data-q="'+s.id+'" placeholder="Viết bài làm của bạn ở đây trước khi xem lời giải…">'+esc(progress.answers[s.id]||"")+"</textarea>"
+      +'<p><button class="btn" type="button" data-sol="'+s.id+'">Xem lời giải từng bước</button> '
+      +'<button class="btn ghost" type="button" data-grade="'+s.id+'">Chấm AI 5 tiêu chí câu này</button></p>'
+      +'<div class="sol" id="sol-'+s.id+'" style="display:none">'
+      +"<h4>1 · Căn cứ pháp lý</h4><p>"+s.basis+"</p>"
+      +"<h4>2 · Áp dụng</h4><p>"+s.apply+"</p>"
+      +"<h4>3 · Kết luận</h4><p>"+s.conclude+"</p>"
+      +"<h4>Rubric tự chấm (tổng "+total.toFixed(1).replace(".",",")+" / 2,0 điểm)</h4>"
+      +'<table class="rubric"><tbody>'+s.rubric.map(function(r){ return "<tr><td>"+r[0]+"</td><td>"+r[1].toFixed(2).replace(".",",")+"</td></tr>"; }).join("")+"</tbody></table>"
+      +"<h4>Lỗi hay gặp</h4><p>"+s.mistakes+"</p>"
+      +"<h4>Trạng thái kiểm định và giới hạn dữ liệu</h4><p>"+s.limit+"</p>"
+      +"<h4>Luật 2026</h4><p>"+s.law2026+"</p>"
+      +"</div>"
+      +'<div class="sol" id="grade-'+s.id+'" style="display:none"></div>'
+      +"</details>";
+  });
+  document.getElementById("solutions").innerHTML=html;
+  document.querySelectorAll("textarea[data-q]").forEach(function(t){
+    t.addEventListener("input",function(){
+      clearTimeout(saveTimer);
+      saveTimer=setTimeout(function(){ progress.answers[t.getAttribute("data-q")]=t.value; progress.lastQ=t.getAttribute("data-q"); saveProgress(); },400);
+    });
+  });
+  document.querySelectorAll("button[data-sol]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var id=b.getAttribute("data-sol"), el=document.getElementById("sol-"+id);
+      var show=el.style.display==="none";
+      el.style.display=show?"block":"none";
+      b.textContent=show?"Ẩn lời giải":"Xem lời giải từng bước";
+      if(show){ progress.done["sol-"+id]=true; progress.lastQ=id; saveProgress(); }
+    });
+  });
+  document.querySelectorAll("button[data-grade]").forEach(function(b){
+    b.addEventListener("click",function(){ gradeWithAI(b.getAttribute("data-grade")); });
+  });
+}
+renderSolutions("all");
+document.querySelectorAll("#examFilter a").forEach(function(a){
+  a.addEventListener("click",function(ev){ ev.preventDefault(); renderSolutions(a.getAttribute("data-f")); document.getElementById("giai-de").scrollIntoView(); });
+});
+
+/* ============ THI THỬ 180 PHÚT — ĐỀ LẺ 2024 ============ */
+var mockTimer=null, mockLeft=180*60;
+(function(){
+  var html="";
+  SOLUTIONS.filter(function(s){ return s.exam==="2024L"; }).forEach(function(s){
+    html+='<div class="card" style="margin:8px 0"><h3>Câu '+s.q+": "+s.title+'</h3><p class="small">'+s.problem+'</p>'
+      +'<textarea data-mock="'+s.id+'" placeholder="Viết bài làm câu '+s.q+'…">'+esc(progress.mock[s.id]||"")+"</textarea></div>";
+  });
+  document.getElementById("mockBox").innerHTML=html;
+  document.querySelectorAll("textarea[data-mock]").forEach(function(t){
+    t.addEventListener("input",function(){
+      clearTimeout(saveTimer);
+      saveTimer=setTimeout(function(){ progress.mock[t.getAttribute("data-mock")]=t.value; saveProgress(); },400);
+    });
+  });
+  document.getElementById("mockStart").addEventListener("click",function(){
+    if(mockTimer){ clearInterval(mockTimer); }
+    mockLeft=180*60;
+    document.getElementById("mockState").textContent="Đang thi — còn:";
+    document.getElementById("mockStart").textContent="Làm lại từ đầu (180:00)";
+    mockTimer=setInterval(function(){
+      mockLeft--;
+      var m=Math.floor(mockLeft/60), sec=mockLeft%60;
+      document.getElementById("mockClock").textContent=m+":"+(sec<10?"0":"")+sec;
+      if(mockLeft<=0){ clearInterval(mockTimer); document.getElementById("mockState").textContent="Hết giờ. Hãy tự chấm theo rubric ở mục Giải đề hoặc gửi chấm AI."; }
+    },1000);
+  });
+  document.getElementById("mockGradeAI").addEventListener("click",function(){
+    var parts=[];
+    SOLUTIONS.filter(function(s){ return s.exam==="2024L"; }).forEach(function(s){
+      parts.push("Câu "+s.q+" ("+s.title+"):\n"+(progress.mock[s.id]||"(bỏ trống)"));
+    });
+    gradeText("Bài thi thử đề lẻ 2024 (5 câu)", parts.join("\n\n"), document.getElementById("mockGradeOut"), document.getElementById("mockGradeAI"));
+  });
+})();
+
+/* ============ AI: RAG-LITE + CHẤM 5 TIÊU CHÍ + LOG ẨN DANH ============ */
+var RAG_KW=[
+ {p:1,kw:["doanh nghiệp","góp vốn","cổ đông","hđtv","đhđcđ","giải thể","sáp nhập","hợp nhất","tnhh","cổ phần","vốn điều lệ","đăng ký doanh nghiệp"]},
+ {p:2,kw:["đầu tư","ưu đãi","chấp thuận chủ trương","sân gôn","gcn đăng ký đầu tư","nhà đầu tư nước ngoài"]},
+ {p:3,kw:["hợp đồng","bất khả kháng","phạt vi phạm","bồi thường","bảo đảm thực hiện","vô hiệu"]},
+ {p:4,kw:["cạnh tranh","thống lĩnh","độc quyền","bán dưới giá thành","ủy ban cạnh tranh"]},
+ {p:5,kw:["tranh chấp","trọng tài","tòa án","thẩm quyền","viac","khởi kiện"]},
+ {p:6,kw:["phá sản","phục hồi","mất khả năng thanh toán","chủ nợ","hội nghị chủ nợ","quản tài viên"]},
+ {p:7,kw:["lao động","thử việc","hợp đồng lao động","làm thêm","trợ cấp","thời hiệu","báo trước"]}
+];
+function norm(s){ return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d"); }
+function detectTopics(q){
+  var nq=norm(q), hits=[];
+  RAG_KW.forEach(function(r){ var c=0; r.kw.forEach(function(k){ if(nq.indexOf(norm(k))>=0) c++; }); if(c>0) hits.push({p:r.p,c:c}); });
+  hits.sort(function(a,b){ return b.c-a.c; });
+  return hits.slice(0,2).map(function(h){ return h.p; });
+}
+function ragContext(q){
+  var ps=detectTopics(q);
+  if(!ps.length) return {label:"tổng quan khung 7 phần", ctx:PARTS.map(function(p){ return "Phần "+p.n+" "+p.t+": "+p.goal; }).join("\n")};
+  var label=ps.map(function(n){ return "Phần "+n+" — "+PARTS[n-1].t; }).join("; ");
+  var ctx=ps.map(function(n){ var p=PARTS[n-1]; return "Phần "+p.n+" "+p.t+" ("+p.law+"):\n"+p.theory.join("\n"); }).join("\n\n");
+  return {label:label, ctx:ctx};
+}
+var AI_SYSTEM="Bạn là gia sư môn Pháp luật về kinh tế và Luật Doanh nghiệp (Chuyên đề 1) cho kỳ thi CPA Việt Nam 2026. Trả lời bằng tiếng Việt, từng bước, luôn trích số điều luật chính xác từ ngữ cảnh được cung cấp; đáp án chính theo luật 2026 (Luật Đầu tư 143/2025, Luật Phục hồi phá sản 142/2025 với ngưỡng mất khả năng thanh toán 06 tháng tại Điều 5.2, thủ tục phục hồi độc lập tại Điều 24; TAND khu vực thay TAND cấp huyện, TAND cấp cao đã bãi bỏ từ 01/07/2025). Không bịa số liệu hay điều luật; nếu câu hỏi nằm ngoài 7 phần của môn (Doanh nghiệp, Đầu tư, Hợp đồng KDTM, Cạnh tranh, Tranh chấp KDTM, Phá sản, Lao động) thì nói rõ giới hạn. Nhắc rằng lời giải chỉ là tham khảo, không phải đáp án chính thức.";
+function logQuestion(q){
+  try{ fetch("/api/log-question",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:q})}).catch(function(){}); }catch(e){}
+}
+function callAI(payload,btn){
+  if(btn) btn.disabled=true;
+  return fetch("/api/ai",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})
+    .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+    .then(function(j){ return j.answer||j.text||j.result||""; })
+    .finally(function(){ if(btn) btn.disabled=false; });
+}
+function gradeText(title,text,outEl,btn){
+  outEl.style.display="block"; outEl.innerHTML="<p>Đang chấm AI…</p>";
+  var prompt="Chấm bài làm sau theo 5 tiêu chí: (1) bao quát ý chính, (2) trích đúng điều luật, (3) áp dụng đúng dữ kiện, (4) kết luận rõ ràng, (5) rủi ro/lỗi dễ mất điểm. Mỗi tiêu chí cho điểm và nhận xét ngắn theo từng ý; tổng điểm tối đa 2,0 cho mỗi câu (bài thi thử 5 câu: tối đa 10). Ghi rõ đây là chấm tham khảo, không phải đáp án chính thức.\n\n"+title+"\n"+text;
+  callAI({question:prompt,system:AI_SYSTEM,context:""},btn).then(function(ans){
+    outEl.innerHTML="<h4>Kết quả chấm AI (tham khảo)</h4><p>"+esc(ans||"AI không trả về nội dung.").replace(/\n/g,"<br>")+"</p>";
+  }).catch(function(){
+    outEl.innerHTML='<p>Chấm AI chưa chạy được trên bản xem trước này (cần hub AI trên bản live). Bạn vẫn có thể tự chấm theo rubric của từng câu ở mục Giải đề.</p><p><button class="btn" type="button" id="gradeRetry">Thử lại</button></p>';
+    var rt=document.getElementById("gradeRetry"); if(rt) rt.addEventListener("click",function(){ gradeText(title,text,outEl,btn); });
+  });
+}
+function gradeWithAI(id){
+  var s=findSol(id), out=document.getElementById("grade-"+id);
+  var ans=progress.answers[id]||"";
+  if(!ans.trim()){ out.style.display="block"; out.innerHTML="<p>Hãy viết bài làm vào ô tự làm của câu này trước khi gửi chấm AI.</p>"; return; }
+  gradeText(s.examLabel+" — Câu "+s.q+": "+s.title+"\nBài làm của học viên:\n"+ans+"\n\nLời giải tham khảo để đối chiếu khi chấm:\n"+s.basis+"\n"+s.apply+"\n"+s.conclude, ans, out, null);
+}
+/* Chat */
+var chatOpen=false;
+document.getElementById("chatFab").addEventListener("click",function(){ chatOpen=!chatOpen; document.getElementById("chatBox").classList.toggle("open",chatOpen); document.getElementById("chatFab").style.display=chatOpen?"none":"block"; });
+document.getElementById("chatClose").addEventListener("click",function(){ chatOpen=false; document.getElementById("chatBox").classList.remove("open"); document.getElementById("chatFab").style.display="block"; });
+document.getElementById("chatExpand").addEventListener("click",function(){
+  var b=document.getElementById("chatBox");
+  var big=b.style.width==="min(760px, calc(100vw - 24px))";
+  b.style.width=big?"":"min(760px, calc(100vw - 24px))";
+  b.style.maxHeight=big?"":"calc(100dvh - 110px)";
+  this.textContent=big?"Mở rộng":"Thu gọn";
+});
+function addMsg(cls,text){ var m=document.getElementById("chatMsgs"); var d=document.createElement("div"); d.className=cls; var sp=document.createElement("span"); sp.innerHTML=esc(text).replace(/\n/g,"<br>"); d.appendChild(sp); m.appendChild(d); m.scrollTop=m.scrollHeight; return sp; }
+function sendChat(){
+  var inp=document.getElementById("chatInput"), q=inp.value.trim();
+  if(!q) return;
+  inp.value="";
+  addMsg("me",q);
+  logQuestion(q);
+  var rag=ragContext(q);
+  var wait=addMsg("ai","Đang dùng tài liệu: "+rag.label+" — đang soạn trả lời…");
+  var btn=document.getElementById("chatSend");
+  callAI({question:q,system:AI_SYSTEM,context:rag.ctx},btn).then(function(ans){
+    wait.innerHTML=esc(ans||"AI không trả về nội dung.").replace(/\n/g,"<br>");
+  }).catch(function(){
+    wait.innerHTML="Chưa nối được hub AI trên bản xem trước này (chat chỉ chạy trên bản live). Câu hỏi của bạn đã được ghi lại ẩn danh.";
+  });
+  document.getElementById("chatMsgs").scrollTop=document.getElementById("chatMsgs").scrollHeight;
+}
+document.getElementById("chatSend").addEventListener("click",sendChat);
+document.getElementById("chatInput").addEventListener("keydown",function(e){ if(e.key==="Enter") sendChat(); });
+
+/* ============ SUPABASE: ĐĂNG NHẬP GOOGLE + ĐỒNG BỘ TIẾN ĐỘ ============ */
+var sb=null, currentUser=null;
+try{
+  if(window.supabase){ sb=window.supabase.createClient("https://yqboyfgmxhaeiepvsooe.supabase.co","sb_publishable_EyIqdHsnohMOfDy2ka_PEQ_11BsS3Dy"); }
+}catch(e){}
+document.getElementById("loginToggle").addEventListener("click",function(){
+  var bar=document.getElementById("authBar");
+  bar.style.display=bar.style.display==="flex"?"none":"flex";
+});
+function scheduleSync(){
+  if(!sb || !currentUser || syncing) return;
+  clearTimeout(syncTimer);
+  syncTimer=setTimeout(syncUp,1200);
+}
+function syncUp(){
+  if(!sb || !currentUser) return;
+  syncing=true;
+  sb.from("user_progress").upsert({user_id:currentUser.id,progress:progress,updated_at:new Date().toISOString()},{onConflict:"user_id"})
+    .then(function(){ syncing=false; },function(){ syncing=false; });
+}
+function setAuthUI(){
+  var st=document.getElementById("authStatus");
+  document.getElementById("btnLogin").style.display=currentUser?"none":"inline-block";
+  document.getElementById("btnLogout").style.display=currentUser?"inline-block":"none";
+  st.textContent=currentUser?("Đã đăng nhập: "+(currentUser.email||"")+" — tiến độ tự đồng bộ (chỉ bạn xem được dữ liệu của mình)."):"Chưa đăng nhập. Mọi tính năng vẫn dùng được; đăng nhập chỉ để đồng bộ tiến độ giữa các thiết bị.";
+}
+if(sb){
+  sb.auth.getSession().then(function(res){
+    var sess=res && res.data ? res.data.session : null;
+    currentUser=sess? sess.user : null;
+    setAuthUI();
+    if(currentUser) pullProgress();
+  });
+  sb.auth.onAuthStateChange(function(ev,sess){
+    currentUser=sess? sess.user : null;
+    setAuthUI();
+    if(currentUser && ev==="SIGNED_IN") pullProgress();
+  });
+}
+function pullProgress(){
+  if(!sb || !currentUser) return;
+  sb.from("user_progress").select("progress").eq("user_id",currentUser.id).single().then(function(res){
+    if(res && res.data && res.data.progress){
+      var remote=res.data.progress;
+      if(!progress.lastQ && !Object.keys(progress.done||{}).length){ progress=Object.assign(progress,remote); try{localStorage.setItem(PKEY,JSON.stringify(progress));}catch(e){} location.reload(); }
+      else scheduleSync();
+    } else scheduleSync();
+  },function(){});
+}
+document.getElementById("btnLogin").addEventListener("click",function(){
+  if(!sb){ alert2("Chưa tải được thư viện đăng nhập — kiểm tra mạng rồi thử lại."); return; }
+  sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:location.href.split("#")[0]}});
+});
+document.getElementById("btnLogout").addEventListener("click",function(){ if(sb) sb.auth.signOut(); });
+updateProgressUI();
+</script>
+</body>
+</html>
