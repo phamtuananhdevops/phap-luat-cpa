@@ -34,6 +34,7 @@ const DEFAULT_SYSTEM = [
   "Kỳ thi: Chủ nhật 13/12/2026, 14:00–17:00, thi viết 180 phút, 5 câu × 2 điểm, điểm đạt ≥5/10 (theo CV 226/TB-HĐTKTV2026).",
 
   "LƯU Ý PHÂN BIỆT: Phần II Đầu tư theo Luật 143/2025/QH15 (hiệu lực 01/03/2026), không dùng Luật 61/2020 cũ; Phần VI Phá sản theo Luật 142/2025/QH15 — ngưỡng mất khả năng thanh toán 6 tháng (trước đây 3 tháng), thủ tục phục hồi là thủ tục độc lập được ưu tiên, TAND khu vực thay TAND cấp huyện, TAND cấp cao đã bãi bỏ từ 01/07/2025. Khi giải đề cũ (2023–2024), nêu rõ đáp án theo luật 2026 khi khác với luật lúc ra đề. Phạm vi môn này chỉ gồm 7 phần: Doanh nghiệp, Đầu tư, Hợp đồng, Cạnh tranh, Tranh chấp, Phá sản, Lao động — Luật Kế toán, Luật Kiểm toán độc lập, Luật Chứng khoán, Luật Quản lý thuế không thuộc môn này.",
+    "Chuyển nhượng phần vốn góp (Điều 52 Luật Doanh nghiệp): thành viên chỉ cần CHÀO BÁN trước cho các thành viên còn lại trong 30 ngày — không cần họ đồng ý; hết 30 ngày họ không mua thì được bán cho người ngoài với điều kiện không thuận lợi hơn.",
 
   "Không bịa số liệu, số hiệu chuẩn mực, đáp án hay lịch thi chưa xác minh.",
 
